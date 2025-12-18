@@ -3,22 +3,23 @@
 
 FROM node:18-slim
 
-# Install system dependencies
+# Install system dependencies (git needed for Theia, libsecret for credential storage)
 RUN apt-get update && apt-get install -y \
     git \
     libsecret-1-0 \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install yarn globally
-RUN npm install -g yarn
+# Yarn is already installed in node:18-slim, just verify it works
+RUN yarn --version
 
 WORKDIR /app
 
 # Copy package files first for better caching
 COPY package.json yarn.lock* ./
 
-# Install dependencies with yarn
-RUN yarn install --frozen-lockfile || yarn install
+# Install dependencies with yarn (ignore scripts to avoid native module issues)
+RUN yarn install --frozen-lockfile --ignore-scripts || yarn install --ignore-scripts
 
 # Copy the rest of the application
 COPY . .
@@ -30,6 +31,7 @@ RUN mkdir -p plugins
 ENV PORT=3007
 ENV THEIA_MINI_BROWSER=0
 ENV USE_LOCAL_GIT=true
+ENV NODE_ENV=production
 
 # Expose port
 EXPOSE 3007
