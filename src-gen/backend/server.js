@@ -21,6 +21,7 @@ container.load(messagingBackendModule);
 container.load(loggerBackendModule);
 
 function defaultServeStatic(app) {
+    app.get('/healthz', (req, res) => res.status(200).send('OK'));
     app.use(express.static(path.resolve(__dirname, '../../lib/frontend')))
 }
 
