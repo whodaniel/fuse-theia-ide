@@ -44,7 +44,7 @@ EXPOSE 3007
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s \
-    CMD curl -f http://localhost:3007/ || exit 1
+    CMD curl -f http://localhost:${PORT:-3007}/ || exit 1
 
-# Start Theia with proper host binding
-CMD ["node", "src-gen/backend/server.js", "--hostname=0.0.0.0", "--port=3007"]
+# Start Theia with proper host binding (use shell form to expand $PORT)
+CMD ["sh", "-c", "node src-gen/backend/main.js --hostname=0.0.0.0 --port=${PORT:-3007}"]
