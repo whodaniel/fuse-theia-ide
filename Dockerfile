@@ -3,14 +3,20 @@
 
 FROM node:22-slim
 
-# Install system dependencies (git needed for Theia, libsecret for credential storage)
+# Install system dependencies (git needed for Theia, libsecret for credential storage, build tools for native modules)
 RUN apt-get update && apt-get install -y \
     git \
     libsecret-1-0 \
     curl \
+    python3 \
+    make \
+    g++ \
+    pkg-config \
+    libx11-dev \
+    libxkbfile-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Yarn is already installed in node:18-slim, just verify it works
+# Yarn is already installed in node:22-slim, just verify it works
 RUN yarn --version
 
 WORKDIR /app
@@ -18,8 +24,8 @@ WORKDIR /app
 # Copy package files first for better caching
 COPY package.json yarn.lock* ./
 
-# Install dependencies with yarn (ignore scripts to avoid native module issues)
-RUN yarn install --frozen-lockfile --ignore-scripts || yarn install --ignore-scripts
+# Install dependencies with yarn (allow scripts to run to build native modules like drivelist)
+RUN yarn install --frozen-lockfile
 
 # Copy the rest of the application
 COPY . .
