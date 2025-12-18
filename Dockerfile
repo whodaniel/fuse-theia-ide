@@ -47,4 +47,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s \
     CMD curl -f http://localhost:${PORT:-3007}/ || exit 1
 
 # Start Theia with proper host binding (use shell form to expand $PORT)
-CMD ["sh", "-c", "node src-gen/backend/main.js --hostname=0.0.0.0 --port=${PORT:-3007}"]
+CMD ["sh", "-c", "echo \"Starting Theia on port $PORT\" && node src-gen/backend/main.js --hostname 0.0.0.0 --port $PORT"]
