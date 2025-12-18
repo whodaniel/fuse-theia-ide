@@ -196,7 +196,9 @@ globalThis.extensionInfo = [
 ];
 
 const serverModule = require('./server');
-const serverAddress = main.start(serverModule());
+const port = process.env.PORT ? parseInt(process.env.PORT) : undefined;
+const host = process.env.HOST || '0.0.0.0';
+const serverAddress = main.start(serverModule(port, host));
 
 serverAddress.then((addressInfo) => {
     if (process && process.send && addressInfo) {
