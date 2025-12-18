@@ -1,0 +1,60 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile || yarn install
+
+      - name: Verify server exists
+        run: |
+          if [ -f "src-gen/backend/server.js" ]; then
+            echo "✅ Server file exists"
+          else
+            echo "❌ Server file missing!"
+            exit 1
+          fi
+
+      - name: Check lib directory
+        run: |
+          if [ -d "lib" ]; then
+            echo "✅ Lib directory exists with $(find lib -type f | wc -l) files"
+          else
+            echo "❌ Lib directory missing!"
+            exit 1
+          fi
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t fuse-theia-ide:test .
+
+      - name: Test container startup
+        run: |
+          docker run -d --name theia-test -p 3007:3007 fuse-theia-ide:test
+          sleep 10
+          curl -f http://localhost:3007/ || (docker logs theia-test && exit 1)
+          docker stop theia-test
