@@ -1,7 +1,7 @@
 # The New Fuse - Theia IDE
 # Cloud-based IDE with AI integrations (Anthropic, OpenAI, Ollama, HuggingFace)
 
-FROM node:18-slim
+FROM node:22-slim
 
 # Install system dependencies (git needed for Theia, libsecret for credential storage)
 RUN apt-get update && apt-get install -y \
