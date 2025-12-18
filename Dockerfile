@@ -30,8 +30,10 @@ RUN yarn install --frozen-lockfile
 # Copy the rest of the application
 COPY . .
 
-# Create plugins directory for VSCode extensions
-RUN mkdir -p plugins
+# Create plugins directories for VSCode extensions (silences startup warnings)
+RUN mkdir -p plugins \
+    && mkdir -p /root/.theia/plugins \
+    && mkdir -p /root/.theia/deployedPlugins
 
 # Set environment variables
 ENV PORT=3007
