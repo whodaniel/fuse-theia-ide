@@ -40,11 +40,7 @@ ENV USE_LOCAL_GIT=true
 ENV NODE_ENV=production
 
 # Expose port
-EXPOSE 3007
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s \
-    CMD curl -f http://localhost:${PORT:-3007}/ || exit 1
+EXPOSE 8080
 
 # Start Theia with proper host binding (use shell form to expand $PORT)
 CMD ["sh", "-c", "echo \"Starting Theia on port $PORT\" && node src-gen/backend/main.js --hostname 0.0.0.0 --port $PORT"]
