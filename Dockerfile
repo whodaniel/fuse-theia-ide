@@ -36,14 +36,14 @@ RUN mkdir -p plugins \
     && mkdir -p /root/.theia/deployedPlugins
 
 # Set environment variables
-ENV PORT=3000
+ENV PORT=3007
 ENV THEIA_MINI_BROWSER=0
 ENV USE_LOCAL_GIT=true
 ENV NODE_ENV=production
 
 # Expose port
-EXPOSE 3000
+EXPOSE 3007
 
 # Start Theia with proper host binding
-# NOTE: Using server.js (not main.js) - server.js properly serves frontend and has /healthz
-CMD ["node", "src-gen/backend/server.js", "--hostname=0.0.0.0", "--port=3000"]
+CMD ["node", "src-gen/backend/main.js", "--hostname=0.0.0.0", "--port=3007"]
+
