@@ -1,0 +1,154 @@
+{
+  // ============================================================================
+  // THEIA 1.67 - SkIDEancer Default Preferences
+  // ============================================================================
+  // This file configures all the new Theia 1.67 features for optimal experience
+  
+  // ==========================================================================
+  // TERMINAL MANAGER (NEW in 1.67)
+  // ==========================================================================
+  // Enable the new Terminal Manager for organizing multiple terminals
+  "terminal.grouping.mode": "tree",
+  
+  // Terminal rendering with WebGL (fixes Chinese input issues)
+  "terminal.integrated.gpuAcceleration": "auto",
+  
+  // ==========================================================================
+  // AI CONFIGURATION
+  // ==========================================================================
+  
+  // Default agent for AI chat
+  "ai.defaultAgent": "Theia Coder",
+  
+  // Enable AI features
+  "ai.enabled": true,
+  
+  // Enhanced file replacer for better code editing accuracy (default in 1.67)
+  "ai.enhancedFileReplacer": true,
+  
+  // Allow AI to suggest code changes
+  "ai.codeCompletion.enabled": true,
+  
+  // ==========================================================================
+  // LLM MODEL DEFAULTS (Updated for 1.67)
+  // ==========================================================================
+  
+  // Anthropic - Claude Opus 4.5 is now default
+  "ai.anthropic.model": "claude-opus-4.5",
+  
+  // OpenAI - GPT 5.1 added
+  "ai.openai.model": "gpt-4.1-turbo",
+  
+  // Google Gemini - Gemini 3 now available
+  "ai.gemini.model": "gemini-3-pro",
+  // Enable Gemini thinking mode
+  "ai.gemini.thinkingMode": true,
+  
+  // Ollama for local models
+  "ai.ollama.model": "llama3.3",
+  
+  // HuggingFace
+  "ai.huggingface.model": "meta-llama/Llama-3.3-70B-Instruct",
+  
+  // ==========================================================================
+  // CLAUDE CODE SESSION FORKING (NEW in 1.67)
+  // ==========================================================================
+  // Automatic session forking when editing previous requests
+  "ai.chat.enableSessionForking": true,
+  "ai.chat.persistSessions": true,
+  
+  // ==========================================================================
+  // DEBUGGING IMPROVEMENTS (NEW in 1.67)
+  // ==========================================================================
+  
+  // Auto-expand lazy variables without user interaction
+  "debug.autoExpandLazyVariables": true,
+  
+  // Preserve variables view expansion state between steps
+  "debug.variablesViewStatePreservation": true,
+  
+  // Show keybindings in debug toolbar tooltips
+  "debug.showKeybindingsInToolbar": true,
+  
+  // ==========================================================================
+  // GITHUB INTEGRATION (for slash commands)
+  // ==========================================================================
+  // Enable GitHub agent for /analyze-gh-ticket, /fix-gh-ticket, /address-gh-review
+  "ai.github.enabled": true,
+  
+  // ==========================================================================
+  // REMEMBER COMMAND (NEW in 1.67)
+  // ==========================================================================
+  // Enable the /remember slash command for context persistence
+  "ai.projectInfo.enabled": true,
+  "ai.projectInfo.autoExtract": true,
+  
+  // ==========================================================================
+  // MCP (Model Context Protocol) SERVERS
+  // ==========================================================================
+  "ai.mcp.servers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/workspace"]
+    }
+  },
+  
+  // ==========================================================================
+  // EDITOR SETTINGS
+  // ==========================================================================
+  "editor.fontSize": 14,
+  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace",
+  "editor.fontLigatures": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  
+  // ==========================================================================
+  // WORKBENCH SETTINGS
+  // ==========================================================================
+  "workbench.colorTheme": "Theia Dark",
+  "workbench.iconTheme": "theia-file-icons",
+  "workbench.tree.indent": 16,
+  "workbench.sideBar.location": "left",
+  
+  // ==========================================================================
+  // FILE EXPLORER
+  // ==========================================================================
+  "explorer.autoReveal": true,
+  "explorer.sortOrder": "default",
+  "explorer.compactFolders": true,
+  
+  // ==========================================================================
+  // GIT INTEGRATION
+  // ==========================================================================
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  
+  // ==========================================================================
+  // EXTENSIONS (VS Code Compatibility - updated to 1.106.1)
+  // ==========================================================================
+  "extensions.autoUpdate": true,
+  "extensions.autoCheckUpdates": true,
+  
+  // ==========================================================================
+  // SEARCH
+  // ==========================================================================
+  "search.smartCase": true,
+  "search.showLineNumbers": true,
+  
+  // ==========================================================================
+  // TIMELINE (NEW package in 1.67)
+  // ==========================================================================
+  "timeline.showUncommittedChanges": true,
+  
+  // ==========================================================================
+  // LOCALIZATION
+  // ==========================================================================
+  "locale": "en"
+}
