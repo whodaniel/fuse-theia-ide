@@ -4,6 +4,9 @@ node_modules/
 # Build outputs (keep lib/ as it's pre-compiled)
 dist/
 
+# Theia generated files (recreated during build)
+src-gen/frontend/
+
 # Logs
 *.log
 npm-debug.log*
