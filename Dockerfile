@@ -31,9 +31,12 @@ RUN yarn install --frozen-lockfile
 COPY . .
 
 # Create plugins directories for VSCode extensions (silences startup warnings)
+# Also copy index.html to lib/frontend where the static server looks for it
 RUN mkdir -p plugins \
     && mkdir -p /root/.theia/plugins \
-    && mkdir -p /root/.theia/deployedPlugins
+    && mkdir -p /root/.theia/deployedPlugins \
+    && cp src-gen/frontend/index.html lib/frontend/ \
+    && cp src-gen/frontend/secondary-window.html lib/frontend/ 2>/dev/null || true
 
 # Set environment variables
 ENV PORT=3007
