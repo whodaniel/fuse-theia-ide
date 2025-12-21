@@ -24,11 +24,22 @@ WORKDIR /app
 # Copy package files first for better caching
 COPY package.json yarn.lock* ./
 
+# Copy packages directory for local dependencies
+COPY packages/ ./packages/
+
 # Install dependencies with yarn (allow scripts to run to build native modules like drivelist)
 RUN yarn install --frozen-lockfile
 
 # Copy the rest of the application
 COPY . .
+
+# Build the AI Agent extension first
+WORKDIR /app/packages/theia-ai-agent
+RUN yarn install 2>/dev/null || npm install 2>/dev/null || true
+RUN yarn build 2>/dev/null || npx tsc 2>/dev/null || true
+
+# Return to app root
+WORKDIR /app
 
 # Build Theia frontend (generates bundle.js)
 # This step is required to compile the frontend assets

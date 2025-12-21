@@ -17,6 +17,7 @@
     "theia": "theia"
   },
   "dependencies": {
+    "@fuse/theia-ai-agent": "file:packages/theia-ai-agent",
     "@modelcontextprotocol/sdk": "^1.16.0",
     "@theia/ai-anthropic": "1.59.0",
     "@theia/ai-chat": "1.59.0",
@@ -53,6 +54,12 @@
     "ws": "^8.18.3",
     "yargs": "16.2.0"
   },
+  "theiaExtensions": [
+    {
+      "frontend": "@fuse/theia-ai-agent/lib/browser/ai-agent-frontend-module",
+      "backend": "@fuse/theia-ai-agent/lib/node/ai-agent-backend-module"
+    }
+  ],
   "devDependencies": {
     "@theia/cli": "1.59.0",
     "concurrently": "^8.2.2",
