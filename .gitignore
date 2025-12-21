@@ -43,3 +43,8 @@ plugins/
 !plugins/.gitkeep
 src-gen/
 lib/frontend/
+
+# Generated webpack configs (should be regenerated in Docker)
+gen-webpack.config.js
+gen-webpack.node.config.js
+webpack.config.js

@@ -1,6 +1,5 @@
 # The New Fuse - SkIDEancer Theia IDE
-# Cloud-based IDE with AI integrations
-# Build v6: 2025-12-21T13:50:00Z
+# Build v8: 2025-12-21T17:05:00Z - Clean regeneration
 
 FROM node:22-slim
 
@@ -21,7 +20,7 @@ RUN yarn --version
 
 WORKDIR /app
 
-# Copy package files first for better caching
+# Copy package files first
 COPY package.json yarn.lock* ./
 
 # Install dependencies
@@ -30,18 +29,24 @@ RUN yarn install --frozen-lockfile || yarn install
 # Copy source files
 COPY . .
 
-# Run theia generate to create src-gen files (including index.js with FrontendApplicationConfigProvider.set)
+# CRITICAL: Remove any stale generated files that might have local paths
+RUN rm -rf gen-webpack.config.js gen-webpack.node.config.js webpack.config.js src-gen lib/frontend
+
+# Run theia generate to create fresh files with correct paths
 RUN echo "=== Running theia generate ===" && yarn theia generate
 
-# Show what was generated
-RUN echo "=== Contents of src-gen/frontend ===" && ls -la src-gen/frontend/ && \
-    echo "=== First 50 lines of src-gen/frontend/index.js ===" && head -50 src-gen/frontend/index.js
+# Verify the generated index.js has the FrontendApplicationConfigProvider.set() call
+RUN echo "=== Contents of src-gen/frontend/ ===" && ls -la src-gen/frontend/
+RUN echo "=== Checking for FrontendApplicationConfigProvider.set ===" && \
+    grep "FrontendApplicationConfigProvider.set" src-gen/frontend/index.js && \
+    echo "FOUND FrontendApplicationConfigProvider.set()" || \
+    echo "WARNING: FrontendApplicationConfigProvider.set() NOT FOUND"
+
+# Show the config that will be set
+RUN echo "=== First 30 lines of index.js ===" && head -30 src-gen/frontend/index.js
 
 # Build the frontend bundle
 RUN echo "=== Running theia build ===" && yarn theia build --mode production
-
-# Show what was built
-RUN echo "=== Contents of lib/frontend ===" && ls -la lib/frontend/ | head -20
 
 # Create plugins directories
 RUN mkdir -p plugins /root/.theia/plugins /root/.theia/deployedPlugins
@@ -54,5 +59,4 @@ ENV NODE_ENV=production
 
 EXPOSE 3007
 
-# Use theia start
 CMD ["yarn", "theia", "start", "--hostname=0.0.0.0", "--port=3007"]
