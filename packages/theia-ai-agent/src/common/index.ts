@@ -8,3 +8,5 @@ export * from './types';
 export * from './agent-service';
 export * from './ai-flow-service';
 export * from './capabilities';
+export * from './services';
+

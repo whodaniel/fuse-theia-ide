@@ -4,3 +4,5 @@
 
 export * from './code-analysis';
 export * from './suggestion-processor';
+export * from './semantic-navigation';
+
