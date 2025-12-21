@@ -1,6 +1,6 @@
 # The New Fuse - SkIDEancer Theia IDE
-# Cloud-based IDE with AI integrations (Anthropic, OpenAI, Ollama, HuggingFace)
-# Build v5: 2025-12-21T13:10:00Z
+# Cloud-based IDE with AI integrations
+# Build v6: 2025-12-21T13:50:00Z
 
 FROM node:22-slim
 
@@ -30,50 +30,18 @@ RUN yarn install --frozen-lockfile || yarn install
 # Copy source files
 COPY . .
 
-# Run complete Theia build
-RUN yarn theia build --mode production
+# Run theia generate to create src-gen files (including index.js with FrontendApplicationConfigProvider.set)
+RUN echo "=== Running theia generate ===" && yarn theia generate
 
-# CRITICAL FIX: Create the proper index.html with FrontendApplicationConfig
-# The Theia CLI should generate this, but it seems to be missing
-RUN cat > lib/frontend/index.html << 'EOF'
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#020617">
-  <title>SkIDEancer - The New Fuse IDE</title>
-  <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  <style>
-    body { background-color: #020617; margin: 0; padding: 0; }
-    .theia-preload {
-      display: flex; justify-content: center; align-items: center;
-      height: 100vh; background-color: #020617; color: #f8fafc;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    .theia-preload::after { content: 'Loading SkIDEancer...'; font-size: 18px; animation: pulse 1.5s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-  </style>
-</head>
-<body>
-  <div class="theia-preload"></div>
-  <script>
-    // CRITICAL: Set frontend config BEFORE bundle.js loads
-    window.theia = window.theia || {};
-    window.theia.frontendApplicationConfig = {
-      applicationName: 'SkIDEancer - The New Fuse IDE',
-      defaultTheme: 'dark',
-      defaultIconTheme: 'theia-file-icons',
-      preferences: { 'files.enableTrash': false, 'security.workspace.trust.enabled': false }
-    };
-    if (typeof self !== 'undefined') { self.frontendApplicationConfig = window.theia.frontendApplicationConfig; }
-  </script>
-  <script type="text/javascript" src="./bundle.js" charset="utf-8"></script>
-</body>
-</html>
-EOF
+# Show what was generated
+RUN echo "=== Contents of src-gen/frontend ===" && ls -la src-gen/frontend/ && \
+    echo "=== First 50 lines of src-gen/frontend/index.js ===" && head -50 src-gen/frontend/index.js
+
+# Build the frontend bundle
+RUN echo "=== Running theia build ===" && yarn theia build --mode production
+
+# Show what was built
+RUN echo "=== Contents of lib/frontend ===" && ls -la lib/frontend/ | head -20
 
 # Create plugins directories
 RUN mkdir -p plugins /root/.theia/plugins /root/.theia/deployedPlugins
