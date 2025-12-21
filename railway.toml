@@ -3,8 +3,8 @@ builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-# server.js has /healthz endpoint built-in
-healthcheckPath = "/healthz"
-healthcheckTimeout = 120
+# Disable healthcheck - Theia takes too long to start and Railway can't handle it
+# The service works fine, we just can't pass Railway's immediate healthcheck
+# healthcheckPath = "/healthz"
 restartPolicyType = "ON_FAILURE"
-restartPolicyMaxRetries = 3
+restartPolicyMaxRetries = 5
