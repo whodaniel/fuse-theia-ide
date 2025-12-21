@@ -1,6 +1,6 @@
 {
   "name": "@the-new-fuse/theia-ide",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "SkIDEancer - Modern Theia IDE with full AI features for The New Fuse platform (Theia 1.67)",
   "private": true,
   "main": "src-gen/backend/server.js",
@@ -17,7 +17,6 @@
     "theia": "theia"
   },
   "dependencies": {
-    "@fuse/theia-ai-agent": "file:packages/theia-ai-agent",
     "@modelcontextprotocol/sdk": "^1.16.0",
     
     "@theia/ai-anthropic": "1.67.0",
@@ -69,12 +68,6 @@
     "ws": "^8.18.3",
     "yargs": "16.2.0"
   },
-  "theiaExtensions": [
-    {
-      "frontend": "@fuse/theia-ai-agent/lib/browser/ai-agent-frontend-module",
-      "backend": "@fuse/theia-ai-agent/lib/node/ai-agent-backend-module"
-    }
-  ],
   "theia": {
     "frontend": {
       "config": {

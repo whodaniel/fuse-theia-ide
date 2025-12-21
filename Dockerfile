@@ -1,4 +1,4 @@
-# The New Fuse - Theia IDE
+# The New Fuse - SkIDEancer Theia IDE
 # Cloud-based IDE with AI integrations (Anthropic, OpenAI, Ollama, HuggingFace)
 
 FROM node:22-slim
@@ -24,25 +24,13 @@ WORKDIR /app
 # Copy package files first for better caching
 COPY package.json yarn.lock* ./
 
-# Copy packages directory for local dependencies
-COPY packages/ ./packages/
-
-# Install dependencies with yarn (allow scripts to run to build native modules like drivelist)
-RUN yarn install --frozen-lockfile
+# Install dependencies with yarn
+RUN yarn install --frozen-lockfile || yarn install
 
 # Copy the rest of the application
 COPY . .
 
-# Build the AI Agent extension first
-WORKDIR /app/packages/theia-ai-agent
-RUN yarn install 2>/dev/null || npm install 2>/dev/null || true
-RUN yarn build 2>/dev/null || npx tsc 2>/dev/null || true
-
-# Return to app root
-WORKDIR /app
-
 # Build Theia frontend (generates bundle.js)
-# This step is required to compile the frontend assets
 RUN npx theia build --mode production
 
 # Create plugins directories for VSCode extensions (silences startup warnings)
@@ -61,4 +49,3 @@ EXPOSE 3007
 
 # Start Theia with proper host binding
 CMD ["node", "src-gen/backend/main.js", "--hostname=0.0.0.0", "--port=3007"]
-
