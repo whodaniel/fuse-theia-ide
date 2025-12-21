@@ -44,5 +44,6 @@ ENV NODE_ENV=production
 # Expose port
 EXPOSE 3000
 
-# Start Theia with proper host binding (Hardcoded for reliability)
-CMD ["node", "src-gen/backend/main.js", "--hostname=0.0.0.0", "--port=3000"]
+# Start Theia with proper host binding
+# NOTE: Using server.js (not main.js) - server.js properly serves frontend and has /healthz
+CMD ["node", "src-gen/backend/server.js", "--hostname=0.0.0.0", "--port=3000"]
