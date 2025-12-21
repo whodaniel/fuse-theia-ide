@@ -41,3 +41,4 @@ Thumbs.db
 # Plugins (user-installed)
 plugins/
 !plugins/.gitkeep
+src-gen/
