@@ -1,10 +1,10 @@
 # The New Fuse - SkIDEancer Theia IDE
 # Cloud-based IDE with AI integrations (Anthropic, OpenAI, Ollama, HuggingFace)
-# Build timestamp: 2025-12-21T12:26:00Z (cache bust)
+# Build v3: 2025-12-21T12:43:00Z
 
 FROM node:22-slim
 
-# Install system dependencies (git needed for Theia, libsecret for credential storage, build tools for native modules)
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     libsecret-1-0 \
@@ -17,7 +17,6 @@ RUN apt-get update && apt-get install -y \
     libxkbfile-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Yarn is already installed in node:22-slim, just verify it works
 RUN yarn --version
 
 WORKDIR /app
@@ -25,31 +24,26 @@ WORKDIR /app
 # Copy package files first for better caching
 COPY package.json yarn.lock* ./
 
-# Install dependencies with yarn
+# Install dependencies
 RUN yarn install --frozen-lockfile || yarn install
 
-# Copy the rest of the application (excluding src-gen/frontend via .dockerignore)
+# Copy source files ONLY (no src-gen since it's gitignored)
 COPY . .
 
-# Remove any stale frontend build files and regenerate
-RUN rm -rf src-gen/frontend lib/frontend
+# Run complete Theia build which handles all code generation
+# This regenerates src-gen AND builds the frontend bundle
+RUN yarn theia build --mode production
 
-# Generate Theia backend and frontend code, then build
-RUN npx theia generate && npx theia build --mode production
+# Create plugins directories
+RUN mkdir -p plugins /root/.theia/plugins /root/.theia/deployedPlugins
 
-# Create plugins directories for VSCode extensions (silences startup warnings)
-RUN mkdir -p plugins \
-    && mkdir -p /root/.theia/plugins \
-    && mkdir -p /root/.theia/deployedPlugins
-
-# Set environment variables
+# Environment
 ENV PORT=3007
 ENV THEIA_MINI_BROWSER=0
 ENV USE_LOCAL_GIT=true
 ENV NODE_ENV=production
 
-# Expose port
 EXPOSE 3007
 
-# Start Theia with proper host binding
+# Start Theia
 CMD ["node", "src-gen/backend/main.js", "--hostname=0.0.0.0", "--port=3007"]
