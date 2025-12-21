@@ -30,13 +30,14 @@ RUN yarn install --frozen-lockfile
 # Copy the rest of the application
 COPY . .
 
+# Build Theia frontend (generates bundle.js)
+# This step is required to compile the frontend assets
+RUN npx theia build --mode production
+
 # Create plugins directories for VSCode extensions (silences startup warnings)
-# Also copy index.html to lib/frontend where the static server looks for it
 RUN mkdir -p plugins \
     && mkdir -p /root/.theia/plugins \
-    && mkdir -p /root/.theia/deployedPlugins \
-    && cp src-gen/frontend/index.html lib/frontend/ \
-    && cp src-gen/frontend/secondary-window.html lib/frontend/ 2>/dev/null || true
+    && mkdir -p /root/.theia/deployedPlugins
 
 # Set environment variables
 ENV PORT=3007
