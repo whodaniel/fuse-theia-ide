@@ -1,5 +1,6 @@
 # The New Fuse - SkIDEancer Theia IDE
 # Cloud-based IDE with AI integrations (Anthropic, OpenAI, Ollama, HuggingFace)
+# Build timestamp: 2025-12-21T12:26:00Z (cache bust)
 
 FROM node:22-slim
 
@@ -27,11 +28,14 @@ COPY package.json yarn.lock* ./
 # Install dependencies with yarn
 RUN yarn install --frozen-lockfile || yarn install
 
-# Copy the rest of the application
+# Copy the rest of the application (excluding src-gen/frontend via .dockerignore)
 COPY . .
 
-# Build Theia frontend (generates bundle.js)
-RUN npx theia build --mode production
+# Remove any stale frontend build files and regenerate
+RUN rm -rf src-gen/frontend lib/frontend
+
+# Generate Theia backend and frontend code, then build
+RUN npx theia generate && npx theia build --mode production
 
 # Create plugins directories for VSCode extensions (silences startup warnings)
 RUN mkdir -p plugins \
