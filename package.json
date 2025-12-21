@@ -37,7 +37,7 @@
     "@theia/file-search": "1.67.0",
     "@theia/filesystem": "1.67.0",
     "@theia/getting-started": "1.67.0",
-    "@theia/git": "1.67.0",
+    "@theia/git": "1.60.2",
     "@theia/keymaps": "1.67.0",
     "@theia/markers": "1.67.0",
     "@theia/messages": "1.67.0",
