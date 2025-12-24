@@ -64,4 +64,5 @@ ENV NODE_ENV=production
 
 EXPOSE 3007
 
-CMD ["yarn", "theia", "start", "--hostname=0.0.0.0", "--port=3007"]
+# Use environment variable for port to match Railway config
+CMD ["sh", "-c", "yarn theia start --hostname=0.0.0.0 --port=${PORT:-3007}"]
