@@ -54,6 +54,14 @@ RUN echo "=== First 30 lines of index.js ===" && head -30 src-gen/frontend/index
 # Build the frontend bundle
 RUN echo "=== Running theia build ===" && yarn theia build --mode production
 
+# Verify build completed successfully
+RUN echo "=== Verifying build outputs ===" && \
+    ls -la src-gen/backend/ && \
+    ls -la src-gen/frontend/ && \
+    test -f src-gen/backend/main.js && echo "✓ Backend main.js exists" && \
+    test -f src-gen/frontend/index.html && echo "✓ Frontend index.html exists" || \
+    (echo "ERROR: Build verification failed!" && exit 1)
+
 # Create plugins directories
 RUN mkdir -p plugins /root/.theia/plugins /root/.theia/deployedPlugins
 
@@ -66,4 +74,11 @@ ENV NODE_ENV=production
 EXPOSE 3007
 
 # Use environment variable for port to match Railway config
-CMD ["sh", "-c", "yarn theia start --hostname=0.0.0.0 --port=${PORT:-3007}"]
+# Add debugging and verification before starting
+CMD ["sh", "-c", "echo '=== Starting Theia IDE ===' && \
+     echo 'PORT='${PORT:-3007} && \
+     echo 'NODE_ENV='$NODE_ENV && \
+     echo 'Checking src-gen/backend exists...' && \
+     ls -la src-gen/backend/main.js && \
+     echo 'Starting server...' && \
+     yarn theia start --hostname=0.0.0.0 --port=${PORT:-3007}"]
