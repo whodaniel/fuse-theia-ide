@@ -21,10 +21,11 @@ RUN yarn --version
 WORKDIR /app
 
 # Copy package files first
-COPY package.json yarn.lock* ./
+COPY package.json .
+COPY yarn.lock* .
 
-# Install dependencies
-RUN yarn install --frozen-lockfile || yarn install
+# Install dependencies (yarn.lock will be generated if not present)
+RUN yarn install --production=false
 
 # Copy source files
 COPY . .

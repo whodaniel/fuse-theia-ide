@@ -5,13 +5,13 @@
   "private": true,
   "main": "src-gen/backend/server.js",
   "scripts": {
-    "build": "pnpm run theia:build",
-    "build:optimized": "pnpm install && pnpm dlx @theia/cli@1.67.0 build --mode production",
+    "build": "yarn run theia:build",
+    "build:optimized": "yarn install && yarn dlx @theia/cli@1.67.0 build --mode production",
     "start": "node src-gen/backend/server.js",
     "start:basic": "node simple-server.js",
     "dev": "PORT=3007 node src-gen/backend/server.js",
     "clean": "rm -rf lib dist node_modules/.cache",
-    "rebuild": "pnpm run clean && pnpm install && pnpm run build",
+    "rebuild": "yarn run clean && yarn install && yarn run build",
     "theia:build": "theia build --mode production",
     "theia:start": "theia start",
     "theia": "theia"
