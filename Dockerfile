@@ -74,5 +74,5 @@ ENV NODE_ENV=production
 EXPOSE 3007
 
 # Use environment variable for port to match Railway config
-# Add debugging and verification before starting
-CMD ["sh", "-c", "echo '=== Starting Theia IDE ===' && echo 'PORT='${PORT:-3007} && echo 'NODE_ENV='$NODE_ENV && echo 'Checking src-gen/backend exists...' && ls -la src-gen/backend/main.js && echo 'Starting server...' && yarn theia start --hostname=0.0.0.0 --port=${PORT:-3007}"]
+# Simplify CMD to avoid quoting issues
+CMD yarn theia start --hostname 0.0.0.0 --port ${PORT:-3007}
