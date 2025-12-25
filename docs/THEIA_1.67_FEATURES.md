@@ -1,8 +1,9 @@
-# SkIDEancer Theia IDE - Version 2.1.0
+# SkIDEancer - Version 2.1.0
 
 ## Updated to Eclipse Theia 1.67 (December 2025)
 
-This document outlines all the new features available in SkIDEancer after the upgrade to Theia 1.67.
+This document outlines all the new features available in SkIDEancer after the
+upgrade to Theia 1.67.
 
 ---
 
@@ -10,7 +11,8 @@ This document outlines all the new features available in SkIDEancer after the up
 
 ### 1. Terminal Manager for Multiple Terminals
 
-**What's New:** A new terminal-manager extension that enables managing multiple terminals within a single view.
+**What's New:** A new terminal-manager extension that enables managing multiple
+terminals within a single view.
 
 **Features:**
 
@@ -45,14 +47,15 @@ Set to `"separate"` for traditional behavior.
 **Benefits:**
 
 - Clear guidance on missing API keys
-- Quick recommendations for agents like "Theia Coder"
+- Quick recommendations for agents like "SkIDEancer Coder"
 - No more confusing automatic Orchestrator delegation
 
 ---
 
 ### 3. Claude Code Session Forking
 
-**What's New:** Automatic session forking when editing previous requests in conversations.
+**What's New:** Automatic session forking when editing previous requests in
+conversations.
 
 **How It Works:**
 
@@ -61,7 +64,8 @@ Set to `"separate"` for traditional behavior.
 3. Theia automatically creates a fork (new branch)
 4. Original conversation is preserved
 
-**Use Case:** Try multiple approaches without losing context of initial attempts.
+**Use Case:** Try multiple approaches without losing context of initial
+attempts.
 
 ---
 
@@ -82,7 +86,8 @@ Set to `"separate"` for traditional behavior.
 | `/remember`         | Extracts important context from chat history |
 | `/remember <topic>` | Focus extraction on specific topic           |
 
-The Remember command saves corrections, clarifications, and project-specific details for future AI interactions.
+The Remember command saves corrections, clarifications, and project-specific
+details for future AI interactions.
 
 ---
 
@@ -229,7 +234,7 @@ All new 1.67 features are enabled by default in:
 ```json
 {
   "terminal.grouping.mode": "tree",
-  "ai.defaultAgent": "Theia Coder",
+  "ai.defaultAgent": "SkIDEancer Coder",
   "ai.enhancedFileReplacer": true,
   "ai.chat.enableSessionForking": true,
   "debug.autoExpandLazyVariables": true

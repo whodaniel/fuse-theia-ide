@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TNF Browser Hub - Enhanced with Theia IDE</title>
+    <title>TNF Browser Hub - Enhanced with SkIDEancer</title>
     <style>
         * {
             margin: 0;
@@ -21,7 +21,7 @@
             overflow: hidden;
         }
 
-        /* Enhanced Title Bar with Theia Integration */
+        /* Enhanced Title Bar with SkIDEancer Integration */
         .title-bar {
             background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
             height: 45px;
@@ -65,7 +65,7 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
-        .ide-btn.theia {
+        .ide-btn.skideancer {
             background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
         }
 
@@ -506,9 +506,9 @@
             <span style="font-size: 12px; color: #9ca3af; font-weight: 400;">Enhanced with IDE</span>
         </div>
         <div class="ide-controls">
-            <button class="ide-btn theia" onclick="openTheiaIDE()">
+            <button class="ide-btn.skideancer" onclick="openSkIDEancer()">
                 <span>💻</span>
-                <span>Theia IDE</span>
+                <span>SkIDEancer</span>
             </button>
             <button class="ide-btn vscode" onclick="openVSCode()">
                 <span>⚡</span>
@@ -583,15 +583,15 @@
                 <span>Integrated Development Environment</span>
                 <div style="margin-left: auto; display: flex; gap: 4px;">
                     <span class="status-dot connected"></span>
-                    <span style="font-size: 11px;">Theia Ready</span>
+                    <span style="font-size: 11px;">SkIDEancer Ready</span>
                 </div>
             </div>
             <div class="ide-buttons">
-                <button class="ide-service-btn" onclick="openTheiaIDE()">
+                <button class="ide-service-btn" onclick="openSkIDEancer()">
                     <span>💻</span>
-                    <span>Open Theia IDE</span>
+                    <span>Open SkIDEancer</span>
                 </button>
-                <button class="ide-service-btn" onclick="openTheiaTerminal()">
+                <button class="ide-service-btn" onclick="openSkIDEancerTerminal()">
                     <span>📟</span>
                     <span>IDE Terminal</span>
                 </button>
@@ -628,13 +628,13 @@
                     <span>🚀</span>
                     <span>TNF Browser Hub</span>
                 </h1>
-                <h2>Enhanced with Theia IDE Integration</h2>
+                <h2>Enhanced with SkIDEancer Integration</h2>
                 <p>Start coding, browsing, or automating with integrated development tools</p>
                 
                 <div class="quick-actions">
-                    <button class="quick-action-btn" onclick="openTheiaIDE()">
+                    <button class="quick-action-btn" onclick="openSkIDEancer()">
                         <span>💻</span>
-                        <span>Launch Theia IDE</span>
+                        <span>Launch SkIDEancer</span>
                     </button>
                     <button class="quick-action-btn" onclick="createNewTab()">
                         <span>🌐</span>
@@ -658,7 +658,7 @@
         <div class="status-left">
             <div class="status-indicator">
                 <span class="status-dot connected"></span>
-                <span>Theia IDE Ready</span>
+                <span>SkIDEancer Ready</span>
             </div>
             <div class="status-indicator">
                 <span class="status-dot partial"></span>
@@ -780,8 +780,8 @@
         }
 
         // IDE Integration Functions
-        function openTheiaIDE() {
-            console.log('Opening Theia IDE');
+        function openSkIDEancer() {
+            console.log('Opening SkIDEancer');
             
             // First try to check if Theia is running
             checkTheiaStatus().then(isRunning => {
@@ -790,7 +790,7 @@
                 }
                 
                 // Create new tab for Theia
-                createNewTab('http://localhost:3000', 'Theia IDE');
+                createNewTab('http://localhost:3000', 'SkIDEancer');
                 
                 if (window.electronAPI) {
                     window.electronAPI.openTheia();
@@ -798,10 +798,10 @@
             });
         }
 
-        function openTheiaTerminal() {
+        function openSkIDEancerTerminal() {
             console.log('Opening Theia Terminal');
             if (window.electronAPI) {
-                window.electronAPI.openTheiaTerminal();
+                window.electronAPI.openSkIDEancerTerminal();
             }
         }
 
@@ -846,7 +846,7 @@
 
         function openProjectExplorer() {
             console.log('Opening Project Explorer');
-            openTheiaIDE(); // For now, open Theia which has project explorer
+            openSkIDEancer(); // For now, open Theia which has project explorer
         }
 
         // Theia Server Management
@@ -961,8 +961,8 @@
         function updateServiceStatus() {
             // Check Theia status
             checkTheiaStatus().then(isRunning => {
-                const theiaIndicators = document.querySelectorAll('.status-dot');
-                theiaIndicators.forEach(dot => {
+                const.skideancerIndicators = document.querySelectorAll('.status-dot');
+               .skideancerIndicators.forEach(dot => {
                     if (dot.nextSibling?.textContent?.includes('Theia')) {
                         dot.className = `status-dot ${isRunning ? 'connected' : 'partial'}`;
                     }
