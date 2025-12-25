@@ -74,5 +74,5 @@ ENV NODE_ENV=production
 EXPOSE 3007
 
 # Use environment variable for port to match Railway config
-# Simplify CMD to avoid quoting issues
-CMD yarn theia start --hostname 0.0.0.0 --port ${PORT:-3007}
+# Use exec form with sh to ensure proper variable interpolation
+CMD ["/bin/sh", "-c", "echo 'Starting Theia IDE on port '${PORT:-3007} && yarn theia start --hostname 0.0.0.0 --port ${PORT:-3007}"]
