@@ -1,7 +1,7 @@
 {
   "name": "@fuse/theia-ai-agent",
   "version": "1.0.0",
-  "description": "Advanced AI Agent system for Theia IDE with memory, flow orchestration, and code analysis",
+  "description": "Advanced AI Agent system for SkIDEancer with memory, flow orchestration, and code analysis",
   "license": "MIT",
   "keywords": [
     "theia-extension",

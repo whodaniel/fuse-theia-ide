@@ -1,24 +1,33 @@
-# The New Fuse - Theia IDE
+# SkIDEancer - The New Fuse Cloud IDE
 
-Cloud-based IDE with full AI integrations for The New Fuse platform.
+AI-powered Cloud IDE for The New Fuse platform. Full coding experience with
+integrated AI assistants, code analysis, and MCP tool support.
 
 ## Features
 
-- 🤖 **AI Integrations**
+### 🤖 AI Integrations
 
-  - Anthropic Claude (`@theia/ai-anthropic`)
-  - OpenAI GPT (`@theia/ai-openai`)
-  - Ollama (local models) (`@theia/ai-ollama`)
-  - HuggingFace (`@theia/ai-huggingface`)
-  - AI Chat interface (`@theia/ai-chat`)
+- **Anthropic Claude** - Advanced reasoning and code generation
+- **OpenAI GPT** - GPT-4 and GPT-4.1 turbo support
+- **Ollama** - Local model support for offline development
+- **HuggingFace** - Open-source model access
+- **AI Chat Interface** - Unified chat for all AI providers
 
-- 📝 **Monaco Editor** - VSCode-quality editing experience
-- 🔌 **VSCode Extension Compatibility** - Install extensions from Open VSX
-- 🖥️ **Terminal** - Integrated terminal
-- 🐙 **Git Integration** - Full git support
-- 🔍 **Search** - Workspace-wide search
-- 🐛 **Debug** - Debug adapter protocol support
-- 📡 **MCP Integration** - Model Context Protocol for AI tools
+### 💻 Development Features
+
+- **Monaco Editor** - VSCode-quality editing experience
+- **VSCode Extension Compatibility** - Install extensions from Open VSX
+- **Integrated Terminal** - Full terminal with AI assistance
+- **Git Integration** - Full git support with visual diff
+- **Search** - Workspace-wide semantic search
+- **Debug** - Debug adapter protocol support
+
+### 🔌 TNF Ecosystem Integration
+
+- **MCP Integration** - Model Context Protocol for AI tools
+- **SkIDEancer Coder** - Built-in AI coding assistant
+- **Code Analysis** - AI-powered security scanning and metrics
+- **Flow Orchestration** - Automated development workflows
 
 ## Quick Start
 
@@ -70,105 +79,100 @@ The `Dockerfile` handles everything.
 fuse-theia-ide/
 ├── src-gen/
 │   ├── backend/
-│   │   └── server.js       # Theia backend server
+│   │   └── main.js         # Server entry point
 │   └── frontend/
-│       └── index.html      # Theia frontend
-├── lib/                    # Pre-compiled Theia modules
-├── static/                 # Static assets
+│       └── index.html      # Frontend entry
+├── lib/                    # Compiled modules
+├── static/
+│   └── branding/           # SkIDEancer branding assets
+├── packages/
+│   └── theia-ai-agent/     # Custom AI agent package
 ├── plugins/                # VSCode-compatible plugins
+├── defaults/
+│   └── preferences.json    # Default IDE preferences
 ├── Dockerfile              # Railway deployment
-├── package.json            # Yarn-based dependencies
-└── webpack.config.js       # Webpack configuration
+└── package.json            # Dependencies
 ```
 
 ## Integration with TNF Ecosystem
 
-This IDE is part of The New Fuse platform:
+SkIDEancer is part of The New Fuse platform:
 
 - **Main Monorepo**: [whodaniel/fuse](https://github.com/whodaniel/fuse) (pnpm)
-- **Theia IDE**: This repository (yarn)
+- **SkIDEancer**: This repository (yarn)
 - **Cloud Sandbox**: MCP tools server
 
 ### Why Separate Repository?
 
-Theia requires Yarn while the main monorepo uses pnpm. Mixing package managers causes:
+The underlying framework requires Yarn while the main monorepo uses pnpm.
+Separating ensures:
 
-- Lockfile conflicts
-- Build script confusion
-- CI/CD complexity
-
-Separating ensures clean builds for both projects.
+- Clean dependency management
+- Independent deployment pipelines
+- Faster CI/CD builds
 
 ## Troubleshooting
 
 ### 502 Bad Gateway on Railway
 
-**Symptoms:** Deployment shows "success" but accessing the URL returns 502 Bad Gateway.
+**Symptoms:** Deployment shows "success" but accessing the URL returns 502 Bad
+Gateway.
 
-**Root Causes & Solutions:**
+**Solutions:**
 
-1. **Wrong start command** - Railway may be configured with `server.js` instead of `main.js`
-
-   The correct production entry point is `node src-gen/backend/main.js`, not `yarn theia start`.
-
-   Fix: Remove any custom start command in Railway settings, or update it to:
+1. **Start command** - Ensure Railway uses:
 
    ```bash
    node src-gen/backend/main.js --hostname 0.0.0.0 --port $PORT
    ```
 
-2. **Port binding** - Ensure the app binds to `0.0.0.0`, not `localhost`
+2. **Port binding** - The app must bind to `0.0.0.0`, not `localhost`
 
-   Fix: The `--hostname 0.0.0.0` flag is required for Railway to route traffic.
+### "The configuration is not set" Error
 
-### "The configuration is not set" Frontend Error
+**Symptom:** Console shows `Error: The configuration is not set`
 
-**Symptom:** Console shows `Error: The configuration is not set. Did you call FrontendApplicationConfigProvider#set?`
-
-**Root Cause:** This is a Theia singleton pattern issue when webpack bundles create multiple copies of the config provider module. Using `Symbol('...')` creates unique symbols per module instance, breaking the singleton.
-
-**Solution:** The Dockerfile includes a three-phase patching system:
-
-1. **Phase 1 (Pre-build)**: Patches all `@theia` source files to use `Symbol.for()` instead of `Symbol()`
-2. **Phase 2 (Post-generate)**: Patches `src-gen/frontend/index.js`
-3. **Phase 3 (Post-build)**: Patches compiled `lib/frontend/*.js` bundles
-
-`Symbol.for('FrontendApplicationConfigProvider')` returns the same global symbol across all module instances, preserving the singleton pattern.
-
-### Deploy Logs Show Only "Starting Container"
-
-This indicates the container exits immediately after starting. Common causes:
-
-1. **Missing file**: The entry point file doesn't exist (e.g., wrong path in CMD)
-2. **Crash on startup**: Check for Node.js errors
-3. **Environment variable issues**: Ensure `PORT` is set correctly
+**Solution:** The Dockerfile includes automatic patching. If building locally,
+ensure the three-phase patch runs during build.
 
 ### Slow Startup Warnings
 
-`DefaultMessagingService.initialize took longer than expected` warnings are normal for Theia. The backend is fully functional despite these warnings.
+`DefaultMessagingService.initialize took longer than expected` warnings are
+normal. The backend is fully functional despite these warnings.
 
 ## Version
 
-- Theia: 1.67.0
-- MCP SDK: 1.16.0
+- SkIDEancer: v13 (2025-12-25)
 - Node.js: 22 (via Dockerfile)
+- MCP SDK: 1.16.0
 
 ## Changelog
 
+### v13 (2025-12-25)
+
+- **Full SkIDEancer rebranding** - Removed legacy naming throughout
+- **Custom Deep Space theme** - TNF brand colors
+- **Welcome page** - New branded welcome experience
+- **AI feature prominence** - Highlighted AI capabilities
+
 ### v12 (2025-12-25)
 
-- Fixed 502 Bad Gateway by using correct production entry point (`main.js`)
-- Added three-phase `Symbol.for` patching for FrontendApplicationConfigProvider
-- Comprehensive troubleshooting documentation
+- Fixed 502 Bad Gateway with correct production entry point
+- Added three-phase config patching
+- Comprehensive troubleshooting docs
 
 ### v11
 
-- Initial attempted fix for startup command
+- Initial startup command fix
 
 ### v10
 
-- Initial Symbol.for patch (single file only)
+- Initial Symbol.for patch
 
 ## License
 
 MIT - Part of The New Fuse project
+
+---
+
+**SkIDEancer** | Powered by [The New Fuse](https://thenewfuse.com) 🔥

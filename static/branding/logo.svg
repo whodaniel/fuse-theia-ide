@@ -1,0 +1,29 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Deep Space gradient -->
+    <linearGradient id="tnfGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6" />
+      <stop offset="50%" style="stop-color:#06b6d4" />
+      <stop offset="100%" style="stop-color:#a855f7" />
+    </linearGradient>
+
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#tnfGradient)"/>
+
+  <!-- Symbol - Lightning bolt representing "Fuse" -->
+  <path
+    d="M36 12L20 32H30L26 52L44 28H34L36 12Z"
+    fill="white"
+    filter="url(#glow)"
+  />
+</svg>

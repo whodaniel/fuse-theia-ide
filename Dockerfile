@@ -1,5 +1,5 @@
-# The New Fuse - SkIDEancer Theia IDE
-# Build v12: 2025-12-25T06:50:00Z - Fix FrontendApplicationConfigProvider order-of-operations issue
+# SkIDEancer - The New Fuse AI-Powered Cloud IDE
+# Build v13: 2025-12-25 - Full SkIDEancer rebranding
 
 FROM node:22-slim
 
@@ -102,4 +102,4 @@ ENV NODE_ENV=production
 EXPOSE 3007
 
 # Use environment variable for port to match Railway config
-CMD ["/bin/sh", "-c", "echo 'Starting Theia IDE on port '${PORT:-3007} && node src-gen/backend/main.js --hostname 0.0.0.0 --port ${PORT:-3007}"]
+CMD ["/bin/sh", "-c", "echo 'Starting SkIDEancer on port '${PORT:-3007} && node src-gen/backend/main.js --hostname 0.0.0.0 --port ${PORT:-3007}"]
