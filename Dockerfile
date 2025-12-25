@@ -1,5 +1,5 @@
 # The New Fuse - SkIDEancer Theia IDE
-# Build v10: 2025-12-22T20:55:00Z - Fix FrontendApplicationConfigProvider using Symbol.for patch
+# Build v11: 2025-12-25T05:15:00Z - Fix 502 error by using correct production entry point (main.js)
 
 FROM node:22-slim
 
@@ -74,5 +74,5 @@ ENV NODE_ENV=production
 EXPOSE 3007
 
 # Use environment variable for port to match Railway config
-# Use exec form with sh to ensure proper variable interpolation
-CMD ["/bin/sh", "-c", "echo 'Starting Theia IDE on port '${PORT:-3007} && yarn theia start --hostname 0.0.0.0 --port ${PORT:-3007}"]
+# FIXED: Use node with main.js (production entry point) instead of yarn theia start (dev helper)
+CMD ["/bin/sh", "-c", "echo 'Starting Theia IDE on port '${PORT:-3007} && node src-gen/backend/main.js --hostname 0.0.0.0 --port ${PORT:-3007}"]
