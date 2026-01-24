@@ -5,7 +5,7 @@ node_modules/
 dist/
 lib/
 
-# Theia generated files (recreated during build)
+# IDE generated files (recreated during build)
 src-gen/
 
 # Generated webpack configs (should be regenerated in Docker)

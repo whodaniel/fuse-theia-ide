@@ -112,7 +112,7 @@
   // WORKBENCH SETTINGS
   // ==========================================================================
   "workbench.colorTheme": "SkIDEancer Deep Space",
-  "workbench.iconTheme": "theia-file-icons",
+  "workbench.iconTheme": "ide-file-icons",
   "workbench.tree.indent": 16,
   "workbench.sideBar.location": "left",
 

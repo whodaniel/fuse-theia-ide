@@ -460,73 +460,78 @@
           <a href="https://thenewfuse.com" target="_blank">The New Fuse</a> ecosystem.
           <br />
           <a href="https://docs.thenewfuse.com" target="_blank">Documentation</a> ·
-          <a href="https://github.com/whodaniel/fuse-theia-ide" target="_blank">GitHub</a> ·
+          <a href="https://github.com/whodaniel/skideancer-ide" target="_blank">GitHub</a> ·
           <a href="#" onclick="openPreferences()">Preferences</a>
         </p>
       </footer>
     </div>
 
     <script>
+      // Alias ide to skideancer for rebranding
+      if (window.ide && !window.skideancer) {
+        window.skideancer = window.ide;
+      }
+
       // IDE Commands
       function openAIChat() {
-        if (window.theia) {
-          window.theia.commands.executeCommand('ai-chat:open');
+        if (window.skideancer) {
+          window.skideancer.commands.executeCommand('ai-chat:open');
         } else {
           console.log('Opening AI Chat...');
         }
       }
 
       function openCodeAnalysis() {
-        if (window.theia) {
-          window.theia.commands.executeCommand('ai-agent:analyze-file');
+        if (window.skideancer) {
+          window.skideancer.commands.executeCommand('ai-agent:analyze-file');
         } else {
           console.log('Opening Code Analysis...');
         }
       }
 
       function openTerminal() {
-        if (window.theia) {
-          window.theia.commands.executeCommand('terminal:new');
+        if (window.skideancer) {
+          window.skideancer.commands.executeCommand('terminal:new');
         } else {
           console.log('Opening Terminal...');
         }
       }
 
       function openMCP() {
-        if (window.theia) {
-          window.theia.commands.executeCommand('ai.mcp.settings');
+        if (window.skideancer) {
+          window.skideancer.commands.executeCommand('ai.mcp.settings');
         } else {
           console.log('Opening MCP Settings...');
         }
       }
 
       function openCommandPalette() {
-        if (window.theia) {
-          window.theia.commands.executeCommand('workbench.action.showCommands');
+        if (window.skideancer) {
+          window.skideancer.commands.executeCommand('workbench.action.showCommands');
         } else {
           console.log('Opening Command Palette...');
         }
       }
 
       function openFile() {
-        if (window.theia) {
-          window.theia.commands.executeCommand('workbench.action.files.openFile');
+        if (window.skideancer) {
+          window.skideancer.commands.executeCommand('workbench.action.files.openFile');
         } else {
           console.log('Opening file dialog...');
         }
       }
 
       function openFolder() {
-        if (window.theia) {
-          window.theia.commands.executeCommand('vscode.openFolder');
+        if (window.skideancer) {
+          window.skideancer.commands.executeCommand('vscode.openFolder');
         } else {
           console.log('Opening folder dialog...');
         }
       }
 
       function openPreferences() {
-        if (window.theia) {
-          window.theia.commands.executeCommand('preferences:open');
+        if (window.skideancer) {
+          window.skideancer.commands.executeCommand('preferences:open');
         } else {
           console.log('Opening Preferences...');
         }

@@ -1,0 +1,45 @@
+{
+  "name": "@fuse/skideancer-ai-agent",
+  "version": "1.0.0",
+  "description": "Advanced AI Agent system for SkIDEancer with memory, flow orchestration, and code analysis",
+  "license": "MIT",
+  "keywords": [
+    "skideancer-extension",
+    "ai",
+    "agent",
+    "flow",
+    "llm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/whodaniel/skideancer-ide.git"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "dependencies": {
+    "@ide/core": "1.59.0",
+    "@ide/ai-core": "1.59.0",
+    "@ide/editor": "1.59.0",
+    "@ide/monaco": "1.59.0",
+    "@ide/workspace": "1.59.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "rimraf": "^5.0.0"
+  },
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/ai-agent-frontend-module",
+      "backend": "lib/node/ai-agent-backend-module"
+    }
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "main": "lib/common/index.js",
+  "typings": "lib/common/index.d.ts"
+}

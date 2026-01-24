@@ -76,7 +76,7 @@ The `Dockerfile` handles everything.
 ## Architecture
 
 ```
-fuse-theia-ide/
+skideancer-ide/
 ├── src-gen/
 │   ├── backend/
 │   │   └── main.js         # Server entry point
@@ -86,7 +86,7 @@ fuse-theia-ide/
 ├── static/
 │   └── branding/           # SkIDEancer branding assets
 ├── packages/
-│   └── theia-ai-agent/     # Custom AI agent package
+│   └── skideancer-ai-agent/ # Custom AI agent package
 ├── plugins/                # VSCode-compatible plugins
 ├── defaults/
 │   └── preferences.json    # Default IDE preferences

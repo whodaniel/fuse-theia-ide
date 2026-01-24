@@ -681,7 +681,7 @@
         
         <div class="service-status">
             <div class="service-indicator">
-                <span class="status-dot connected" id="theia-status-dot"></span>
+                <span class="status-dot connected" id="ide-status-dot"></span>
                 <span>SkIDEancer</span>
             </div>
             <div class="service-indicator">
@@ -1005,7 +1005,7 @@
         ];
         let tabCounter = 1;
         let services = {
-            theia: { status: 'disconnected' },
+            ide: { status: 'disconnected' },
             mcp: { status: 'disconnected' },
             ai: { status: 'disconnected' },
             api: { status: 'disconnected' }, // Added API service
@@ -1275,13 +1275,13 @@
             console.log('Opening SkIDEancer');
             if (window.electronAPI) {
                 try {
-                    // Check Theia status from native host
-                    const theiaStatusResponse = await window.electronAPI.invoke('native:execute', 'get_service_status', ['theia']);
-                    if (theiaStatusResponse.success && theiaStatusResponse.status === 'running') {
-                        console.log('Theia is already running.');
+                    // Check SkIDEancer status from native host
+                    const ideStatusResponse = await window.electronAPI.invoke('native:execute', 'get_service_status', ['ide']);
+                    if (ideStatusResponse.success && ideStatusResponse.status === 'running') {
+                        console.log('SkIDEancer is already running.');
                     } else {
-                        console.log('Starting Theia server...');
-                        await window.electronAPI.invoke('native:execute', 'start_service', ['theia']);
+                        console.log('Starting SkIDEancer server...');
+                        await window.electronAPI.invoke('native:execute', 'start_service', ['ide']);
                         await new Promise(resolve => setTimeout(resolve, 3000)); // Give it time to start
                     }
                     createNewTab('http://localhost:3000', 'SkIDEancer', '💻');
@@ -1315,14 +1315,14 @@
         function openGitInterface() {
             console.log('Opening Git Interface');
             if (window.electronAPI) {
-                window.electronAPI.invoke('native:execute', 'open_theia_git');
+                window.electronAPI.invoke('native:execute', 'open_ide_git');
             }
         }
 
         function openDebugger() {
             console.log('Opening Debugger');
             if (window.electronAPI) {
-                window.electronAPI.invoke('native:execute', 'open_theia_debugger');
+                window.electronAPI.invoke('native:execute', 'open_ide_debugger');
             }
         }
 
@@ -1449,7 +1449,7 @@
             console.log('Refreshing services status');
             if (window.electronAPI) {
                 try {
-                    const theiaStatusResponse = await window.electronAPI.invoke('native:execute', 'get_service_status', ['theia']);
+                    const ideStatusResponse = await window.electronAPI.invoke('native:execute', 'get_service_status', ['ide']);
                     console.log('Refreshed System Status:', status);
                     updateServiceStatus(status.statuses);
                 } catch (error) {
@@ -1498,14 +1498,14 @@
             }
 
             // Update status dots in the title bar
-            const theiaDot = document.getElementById('theia-status-dot');
+            const ideDot = document.getElementById('ide-status-dot');
             const mcpDot = document.getElementById('mcp-status-dot');
             const aiDot = document.getElementById('ai-status-dot');
             // Assuming we will add API and Backend status dots to the title bar later
             // const apiDot = document.getElementById('api-status-dot');
             // const backendDot = document.getElementById('backend-status-dot');
 
-            if (theiaDot) theiaDot.className = `status-dot ${services.skideancer.status}`;
+            if (ideDot) ideDot.className = `status-dot ${services.skideancer.status}`;
             if (mcpDot) mcpDot.className = `status-dot ${services.mcp.status}`;
             if (aiDot) aiDot.className = `status-dot ${services.ai.status}`;
             // if (apiDot) apiDot.className = `status-dot ${services.api.status}`;
@@ -1517,7 +1517,7 @@
                 if (categoryHeaderDot) {
                     // Determine the service name based on category class
                     let serviceName = '';
-                    if (category.classList.contains('ide')) serviceName = 'theia'; // Assuming 'ide' category maps to 'theia' service
+                    if (category.classList.contains('ide')) serviceName = 'ide'; // Assuming 'ide' category maps to 'ide' service
                     else if (category.classList.contains('ai-clis')) serviceName = 'ai'; // Assuming 'ai-clis' maps to 'ai'
                     else if (category.classList.contains('mcp-server')) serviceName = 'mcp'; // Assuming 'mcp-server' maps to 'mcp'
                     // Add more mappings if needed for other categories to specific services
@@ -1546,7 +1546,7 @@
                     </p>
                     
                     <div class="quick-actions">
-                        <button class="quick-action-btn theia" onclick="openSkIDEancer()">
+                        <button class="quick-action-btn ide" onclick="openSkIDEancer()">
                             <span>💻</span>
                             <span>Launch SkIDEancer</span>
                         </button>

@@ -56,5 +56,5 @@ docs/
 *.md
 !README.md
 
-# Static browser hub (not needed for Theia)
-static/browser-hub/
+# Static browser hub (included in IDE for browser extensions support)
+# static/browser-hub/

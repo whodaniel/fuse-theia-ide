@@ -30,21 +30,27 @@ RUN yarn install --production=false
 # Copy source files
 COPY . .
 
+# Build sub-packages
+RUN cd packages/skideancer-ai-agent && yarn install && yarn build
+
 # CRITICAL: Remove ALL stale generated/built files to ensure clean regeneration
 RUN rm -rf gen-webpack.config.js gen-webpack.node.config.js webpack.config.js src-gen lib/frontend lib/backend
 
 # === PHASE 1: Pre-build patches ===
-# Patch Theia core to use Symbol.for BEFORE generating/building
+# Patch IDE core to use Symbol.for BEFORE generating/building
 # This ensures the Symbol key is global across all module instances
-RUN echo "=== PHASE 1: Patching Theia core source to use Symbol.for ===" && \
+RUN echo "=== PHASE 1: Patching IDE core source to use Symbol.for ===" && \
     find node_modules/@theia -name "*.js" -exec grep -l "Symbol('FrontendApplicationConfigProvider')" {} \; 2>/dev/null | while read f; do \
         echo "Patching: $f"; \
         sed -i "s/Symbol('FrontendApplicationConfigProvider')/Symbol.for('FrontendApplicationConfigProvider')/g" "$f"; \
     done && \
     echo "Phase 1 complete"
 
-# Run theia generate to create fresh files with correct paths
-RUN echo "=== Running theia generate ===" && yarn theia generate
+# Run IDE generate to create fresh files with correct paths
+RUN echo "=== Running IDE generate ===" && yarn ide generate
+
+# === PHASE 1.5: Deep Rebranding ===
+RUN echo "=== Running deep rebranding patch ===" && node branding-patch.js
 
 # === PHASE 2: Post-generate patches ===
 # Patch the generated entry point to use Symbol.for
@@ -64,7 +70,7 @@ RUN echo "=== Checking for FrontendApplicationConfigProvider.set ===" && \
 RUN echo "=== First 50 lines of index.js ===" && head -50 src-gen/frontend/index.js
 
 # Build the frontend bundle
-RUN echo "=== Running theia build ===" && yarn theia build --mode production
+RUN echo "=== Running IDE build ===" && yarn run ide:build
 
 # === PHASE 3: Post-build patches ===
 # Patch the compiled bundle to ensure Symbol.for is used everywhere
@@ -93,9 +99,13 @@ RUN echo "=== Verifying build outputs ===" && \
 # Create plugins directories
 RUN mkdir -p plugins /root/.theia/plugins /root/.theia/deployedPlugins
 
+# Pre-install The New Fuse extension
+COPY apps/vscode-extension/the-new-fuse-9.0.0.vsix /root/.theia/plugins/the-new-fuse.vsix
+COPY apps/vscode-extension/the-new-fuse-9.0.0.vsix /app/plugins/the-new-fuse.vsix
+
 # Environment
 ENV PORT=3007
-ENV THEIA_MINI_BROWSER=0
+ENV IDE_MINI_BROWSER=0
 ENV USE_LOCAL_GIT=true
 ENV NODE_ENV=production
 

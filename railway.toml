@@ -3,10 +3,10 @@ builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-# No healthcheck - Theia takes too long to start
+# No healthcheck - IDE takes too long to start
 # healthcheckPath = "/"
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 5
-# Use theia start command to ensure proper initialization
+# Use IDE start command to ensure proper initialization
 # Remove the startCommand so Railway uses the Dockerfile CMD instead
-# startCommand = "yarn theia start --hostname=0.0.0.0 --port=$PORT"
+# startCommand = "yarn ide start --hostname=0.0.0.0 --port=$PORT"

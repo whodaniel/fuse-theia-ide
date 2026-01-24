@@ -1,10 +1,10 @@
 /**
- * Frontend Config Provider Patch for Theia 1.67
+ * Frontend Config Provider Patch for SkIDEancer 1.67
  * 
  * This script patches the webpack configuration to ensure FrontendApplicationConfigProvider
  * is properly initialized before any other modules try to access it.
  * 
- * The issue: When webpack bundles Theia, module execution order can cause
+ * The issue: When webpack bundles SkIDEancer, module execution order can cause
  * FrontendApplicationConfigProvider.get() to be called before .set() runs.
  */
 
@@ -15,7 +15,7 @@ function patchWebpackConfig() {
     const webpackConfigPath = path.join(__dirname, 'gen-webpack.config.js');
     
     if (!fs.existsSync(webpackConfigPath)) {
-        console.log('gen-webpack.config.js not found, will be patched after theia generate');
+        console.log('gen-webpack.config.js not found, will be patched after IDE generate');
         return;
     }
     

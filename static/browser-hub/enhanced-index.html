@@ -783,23 +783,23 @@
         function openSkIDEancer() {
             console.log('Opening SkIDEancer');
             
-            // First try to check if Theia is running
-            checkTheiaStatus().then(isRunning => {
+            // First try to check if SkIDEancer is running
+            checkSkIDEancerStatus().then(isRunning => {
                 if (!isRunning) {
-                    startTheiaServer();
+                    startSkIDEancerServer();
                 }
                 
-                // Create new tab for Theia
+                // Create new tab for SkIDEancer
                 createNewTab('http://localhost:3000', 'SkIDEancer');
                 
                 if (window.electronAPI) {
-                    window.electronAPI.openTheia();
+                    window.electronAPI.openSkIDEancer();
                 }
             });
         }
 
         function openSkIDEancerTerminal() {
-            console.log('Opening Theia Terminal');
+            console.log('Opening SkIDEancer Terminal');
             if (window.electronAPI) {
                 window.electronAPI.openSkIDEancerTerminal();
             }
@@ -831,26 +831,26 @@
         }
 
         function openGitInterface() {
-            console.log('Opening Git Interface in Theia');
+            console.log('Opening Git Interface in SkIDEancer');
             if (window.electronAPI) {
-                window.electronAPI.openTheiaGit();
+                window.electronAPI.openSkIDEancerGit();
             }
         }
 
         function openDebugger() {
-            console.log('Opening Debugger in Theia');
+            console.log('Opening Debugger in SkIDEancer');
             if (window.electronAPI) {
-                window.electronAPI.openTheiaDebugger();
+                window.electronAPI.openSkIDEancerDebugger();
             }
         }
 
         function openProjectExplorer() {
             console.log('Opening Project Explorer');
-            openSkIDEancer(); // For now, open Theia which has project explorer
+            openSkIDEancer(); // For now, open SkIDEancer which has project explorer
         }
 
-        // Theia Server Management
-        async function checkTheiaStatus() {
+        // SkIDEancer Server Management
+        async function checkSkIDEancerStatus() {
             try {
                 const response = await fetch('http://localhost:3000', { 
                     method: 'HEAD',
@@ -862,13 +862,13 @@
             }
         }
 
-        function startTheiaServer() {
-            console.log('Starting Theia Server');
+        function startSkIDEancerServer() {
+            console.log('Starting SkIDEancer Server');
             if (window.electronAPI) {
-                window.electronAPI.startTheiaServer();
+                window.electronAPI.startSkIDEancerServer();
             } else {
                 // Fallback: try to start via command
-                console.warn('Electron API not available, cannot start Theia server automatically');
+                console.warn('Electron API not available, cannot start SkIDEancer server automatically');
             }
         }
 
@@ -959,11 +959,11 @@
         }
 
         function updateServiceStatus() {
-            // Check Theia status
-            checkTheiaStatus().then(isRunning => {
+            // Check SkIDEancer status
+            checkSkIDEancerStatus().then(isRunning => {
                 const.skideancerIndicators = document.querySelectorAll('.status-dot');
                .skideancerIndicators.forEach(dot => {
-                    if (dot.nextSibling?.textContent?.includes('Theia')) {
+                    if (dot.nextSibling?.textContent?.includes('SkIDEancer')) {
                         dot.className = `status-dot ${isRunning ? 'connected' : 'partial'}`;
                     }
                 });

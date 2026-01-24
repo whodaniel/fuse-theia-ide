@@ -1,6 +1,6 @@
-# SkIDEancer (Theia IDE) - Deployment Troubleshooting Guide
+# SkIDEancer (SkIDEancer IDE) - Deployment Troubleshooting Guide
 
-This document covers common deployment issues and their solutions for the fuse-theia-ide Railway deployment.
+This document covers common deployment issues and their solutions for the fuse-ide-ide Railway deployment.
 
 ## Issue Summary (December 2025)
 
@@ -10,9 +10,9 @@ After deploying to Railway, the application returned a **502 Bad Gateway** error
 
 ### Root Causes Identified
 
-1. **502 Bad Gateway**: The start command was using `yarn theia start` (development helper) instead of `node src-gen/backend/main.js` (production entry point)
+1. **502 Bad Gateway**: The start command was using `yarn ide start` (development helper) instead of `node src-gen/backend/main.js` (production entry point)
 
-2. **FrontendApplicationConfigProvider Error**: Webpack bundling creates multiple copies of modules, and Theia's singleton pattern using `Symbol('...')` creates unique symbols per module instance, breaking the pattern.
+2. **FrontendApplicationConfigProvider Error**: Webpack bundling creates multiple copies of modules, and core's singleton pattern using `Symbol('...')` creates unique symbols per module instance, breaking the pattern.
 
 ---
 
@@ -20,7 +20,7 @@ After deploying to Railway, the application returned a **502 Bad Gateway** error
 
 ### Fix 1: Correct Production Entry Point
 
-**Problem**: `yarn theia start` is a development server helper that may not work correctly with pre-built artifacts.
+**Problem**: `yarn ide start` is a development server helper that may not work correctly with pre-built artifacts.
 
 **Solution**: Use Node.js directly with the compiled backend entry point:
 
@@ -47,8 +47,8 @@ Key points:
 The Dockerfile implements a three-phase patching approach:
 
 ```dockerfile
-# PHASE 1: Patch all @theia source files BEFORE generate/build
-RUN find node_modules/@theia -name "*.js" -exec grep -l "Symbol('FrontendApplicationConfigProvider')" {} \; | while read f; do \
+# PHASE 1: Patch all @ide source files BEFORE generate/build
+RUN find node_modules/@ide -name "*.js" -exec grep -l "Symbol('FrontendApplicationConfigProvider')" {} \; | while read f; do \
     sed -i "s/Symbol('FrontendApplicationConfigProvider')/Symbol.for('FrontendApplicationConfigProvider')/g" "$f"; \
 done
 
@@ -92,11 +92,11 @@ During build, these files should exist:
 # Install dependencies
 yarn install
 
-# Generate Theia
-yarn theia generate
+# Generate IDE
+yarn ide generate
 
 # Build
-yarn theia build --mode production
+yarn ide build --mode production
 
 # Run
 node src-gen/backend/main.js --hostname 0.0.0.0 --port 3007
@@ -123,7 +123,7 @@ dockerfilePath = "Dockerfile"
 [deploy]
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 5
-# No healthcheck - Theia takes a while to start
+# No healthcheck - SkIDEancer takes a while to start
 ```
 
 ### Important: Don't Set Custom Start Command
@@ -147,7 +147,7 @@ If Railway has a custom start command configured in the service settings, it wil
 
 ## References
 
-- [Theia Framework](https://theia-ide.org/)
+- [IDE Framework](https://ide-ide.org/)
 - [Railway Documentation](https://docs.railway.app/)
 - [Webpack Module Federation](https://webpack.js.org/concepts/module-federation/)
 - [JavaScript Symbol.for()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)

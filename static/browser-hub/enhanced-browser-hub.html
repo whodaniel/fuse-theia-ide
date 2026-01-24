@@ -838,7 +838,7 @@
             .sidebar {
                 width: 240px;
             }
-            
+
             .settings-panel,
             .extensions-panel,
             .prompt-manager-panel {
@@ -850,7 +850,7 @@
             .sidebar {
                 width: 200px;
             }
-            
+
             .tab {
                 min-width: 100px;
             }
@@ -892,7 +892,7 @@
         .sidebar-body::-webkit-scrollbar-thumb:hover, .settings-content::-webkit-scrollbar-thumb:hover, .extensions-content::-webkit-scrollbar-thumb:hover, .prompt-manager-content::-webkit-scrollbar-thumb:hover {
             background: #6b7280;
         }
-        
+
         /* Browser Engine Switcher */
         .engine-selector {
             background: #2d3142;
@@ -1743,8 +1743,8 @@
                     </button>
                 </div>
 
-                <input type="text" class="address-bar" id="addressBar" 
-                       placeholder="Enter URL, search, or navigate to TNF services..." 
+                <input type="text" class="address-bar" id="addressBar"
+                       placeholder="Enter URL, search, or navigate to TNF services..."
                        onkeypress="handleAddressBarEnter(event)">
 
                 <!-- Chrome Extension Toolbar -->
@@ -1759,13 +1759,13 @@
                         <option value="webkit">WebKit</option>
                         <option value="firefox">Firefox</option>
                     </select>
-                    
+
                     <!-- Quick Extension Access -->
                     <button class="action-btn extension-quick-access" onclick="toggleExtensions()" title="Chrome Extensions">
                         <i class="fas fa-puzzle-piece"></i>
                         <span class="extension-count">10</span>
                     </button>
-                    
+
                     <button class="action-btn" onclick="toggleBookmarks()" title="Bookmarks">
                         <i class="fas fa-bookmark"></i>
                     </button>
@@ -1793,7 +1793,7 @@
                     <button class="tab-scroll-btn" onclick="scrollTabs('left')">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    
+
                     <div class="tabs-container" id="tabsContainer">
                         <div class="tab active" id="tab-dashboard" onclick="switchToTab('dashboard')">
                             <i class="fas fa-tachometer-alt"></i>
@@ -1803,12 +1803,12 @@
                             </button>
                         </div>
                     </div>
-                    
+
                     <button class="tab-scroll-btn" onclick="scrollTabs('right')">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-                
+
                 <button class="new-tab-btn" onclick="createNewTab()" title="New Tab">
                     <i class="fas fa-plus"></i>
                 </button>
@@ -1941,15 +1941,15 @@
                     <span>Refresh</span>
                 </button>
             </div>
-            
+
             <!-- Extension Search -->
             <div class="extension-search">
                 <div class="search-input-container">
                     <i class="fas fa-search search-icon"></i>
-                    <input type="text" 
-                           id="extensionSearchInput" 
-                           class="extension-search-input" 
-                           placeholder="Search extensions..." 
+                    <input type="text"
+                           id="extensionSearchInput"
+                           class="extension-search-input"
+                           placeholder="Search extensions..."
                            oninput="filterExtensions(this.value)">
                     <button class="search-clear" onclick="clearExtensionSearch()" style="display: none;">
                         <i class="fas fa-times"></i>
@@ -1971,7 +1971,7 @@
                     </select>
                 </div>
             </div>
-            
+
             <!-- Installed Extensions Section -->
             <div class="extensions-section">
                 <h3>Installed Extensions <span id="extensionCount" class="extension-count-label">(10)</span></h3>
@@ -1979,10 +1979,48 @@
                     <!-- Real extensions will be loaded here -->
                 </div>
             </div>
-            
-            <!-- Demo/Mock Extensions Section -->
+
+            <!-- Official TNF Extensions Section -->
             <div class="extensions-section">
-                <h3>Popular Extensions (Demo)</h3>
+                <h3>Official TNF Extensions</h3>
+
+                <div class="extension-item">
+                    <div class="extension-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="extension-info">
+                        <div class="extension-name">Antigravity Official</div>
+                        <div class="extension-desc">Advanced AI-powered browsing and workspace integration.</div>
+                    </div>
+                    <button class="settings-toggle active"></button>
+                </div>
+
+                <div class="extension-item">
+                    <div class="extension-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="extension-info">
+                        <div class="extension-name">Claude Official</div>
+                        <div class="extension-desc">Official Anthropic Claude extension for AI assistance.</div>
+                    </div>
+                    <button class="settings-toggle active"></button>
+                </div>
+
+                <div class="extension-item">
+                    <div class="extension-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="extension-info">
+                        <div class="extension-name">TNF Extension</div>
+                        <div class="extension-desc">Protocol orchestration and agent coordination.</div>
+                    </div>
+                    <button class="settings-toggle active"></button>
+                </div>
+            </div>
+
+            <!-- Popular Extensions Section -->
+            <div class="extensions-section">
+                <h3>Popular Extensions</h3>
                 <div class="extension-item">
                 <div class="extension-icon">
                     <i class="fas fa-ad"></i>
@@ -1993,7 +2031,7 @@
                 </div>
                 <button class="settings-toggle active"></button>
             </div>
-            
+
             <div class="extension-item">
                 <div class="extension-icon">
                     <i class="fas fa-eye-slash"></i>
@@ -2004,7 +2042,7 @@
                 </div>
                 <button class="settings-toggle active"></button>
             </div>
-            
+
             <div class="extension-item">
                 <div class="extension-icon">
                     <i class="fas fa-code"></i>
@@ -2015,7 +2053,7 @@
                 </div>
                 <button class="settings-toggle"></button>
             </div>
-            
+
             <div class="extension-item">
                 <div class="extension-icon">
                     <i class="fas fa-palette"></i>
@@ -2026,7 +2064,7 @@
                 </div>
                 <button class="settings-toggle active"></button>
             </div>
-            
+
             <div class="extension-item">
                 <div class="extension-icon">
                     <i class="fas fa-save"></i>
@@ -2037,7 +2075,7 @@
                 </div>
                 <button class="settings-toggle active"></button>
             </div>
-            
+
             <div class="extension-item">
                 <div class="extension-icon">
                     <i class="fab fa-github"></i>
@@ -2048,7 +2086,7 @@
                 </div>
                 <button class="settings-toggle active"></button>
             </div>
-            
+
             <div class="extension-item">
                 <div class="extension-icon">
                     <i class="fas fa-shield-alt"></i>
@@ -2059,7 +2097,7 @@
                 </div>
                 <button class="settings-toggle"></button>
             </div>
-            
+
             <div class="extension-item">
                 <div class="extension-icon">
                     <i class="fas fa-key"></i>
@@ -2070,7 +2108,7 @@
                 </div>
                 <button class="settings-toggle active"></button>
             </div>
-            
+
             <div class="extension-item">
                 <div class="extension-icon">
                     <i class="fas fa-language"></i>
@@ -2182,32 +2220,32 @@
         let tabHistory = {};
         let sidebarCollapsed = false;
 
-        
+
         // Sidebar Management
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const icon = document.querySelector('.sidebar-toggle i');
-            
+
             sidebarCollapsed = !sidebarCollapsed;
             sidebar.classList.toggle('collapsed', sidebarCollapsed);
-            
+
             if (sidebarCollapsed) {
                 icon.className = 'fas fa-chevron-right';
             } else {
                 icon.className = 'fas fa-chevron-left';
             }
         }
-        
+
         function setSidebarWidth(width) {
             const sidebar = document.getElementById('sidebar');
             sidebar.style.width = width + 'px';
         }
-        
+
         // Section Management
         function toggleSection(sectionId) {
             const content = document.getElementById(sectionId + '-section');
             const arrow = document.getElementById(sectionId + '-arrow');
-            
+
             if (content.classList.contains('collapsed')) {
                 content.classList.remove('collapsed');
                 arrow.classList.remove('collapsed');
@@ -2216,13 +2254,13 @@
                 arrow.classList.add('collapsed');
             }
         }
-        
+
         // Drag and Drop Functionality
         let draggedElement = null;
-        
+
         function initDragAndDrop() {
             const draggableItems = document.querySelectorAll('.nav-item.draggable');
-            
+
             draggableItems.forEach(item => {
                 item.addEventListener('dragstart', handleDragStart);
                 item.addEventListener('dragover', handleDragOver);
@@ -2232,14 +2270,14 @@
                 item.addEventListener('dragleave', handleDragLeave);
             });
         }
-        
+
         function handleDragStart(e) {
             draggedElement = this;
             this.classList.add('dragging');
             e.dataTransfer.effectAllowed = 'move';
             e.dataTransfer.setData('text/html', this.outerHTML);
         }
-        
+
         function handleDragOver(e) {
             if (e.preventDefault) {
                 e.preventDefault();
@@ -2247,59 +2285,59 @@
             e.dataTransfer.dropEffect = 'move';
             return false;
         }
-        
+
         function handleDragEnter(e) {
             if (this !== draggedElement) {
                 this.classList.add('drag-over');
             }
         }
-        
+
         function handleDragLeave(e) {
             this.classList.remove('drag-over');
         }
-        
+
         function handleDrop(e) {
             if (e.stopPropagation) {
                 e.stopPropagation();
             }
-            
+
             if (draggedElement !== this) {
                 // Get parent container
                 const container = this.parentNode;
                 const draggedIndex = Array.from(container.children).indexOf(draggedElement);
                 const dropIndex = Array.from(container.children).indexOf(this);
-                
+
                 // Reorder elements
                 if (draggedIndex < dropIndex) {
                     container.insertBefore(draggedElement, this.nextSibling);
                 } else {
                     container.insertBefore(draggedElement, this);
                 }
-                
+
                 // Save new order to localStorage
                 saveMenuItemOrder();
             }
-            
+
             this.classList.remove('drag-over');
             return false;
         }
-        
+
         function handleDragEnd(e) {
             this.classList.remove('dragging');
-            
+
             // Remove drag-over class from all items
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('drag-over');
             });
-            
+
             draggedElement = null;
         }
-        
+
         function saveMenuItemOrder() {
             // Implementation to save menu order to localStorage
             const sections = document.querySelectorAll('.nav-section-content');
             const order = {};
-            
+
             sections.forEach(section => {
                 const items = section.querySelectorAll('.nav-item.draggable');
                 order[section.id] = Array.from(items).map(item => ({
@@ -2307,10 +2345,10 @@
                     onclick: item.getAttribute('onclick')
                 }));
             });
-            
+
             localStorage.setItem('menuItemOrder', JSON.stringify(order));
         }
-        
+
         // Tab Management
         function createNewTab(url = 'about:blank', title = 'New Tab', icon = 'fas fa-globe') {
             const tabId = 'tab-' + Date.now();
@@ -2318,7 +2356,7 @@
 
             // Check if this is SkIDEancer
             const isSkIDEancer = url.includes('localhost:3007') || title.includes('SkIDEancer');
-            
+
             // Create loading overlay for SkIDEancer
             let loadingOverlay = null;
             if (isSkIDEancer) {
@@ -2361,7 +2399,7 @@
             frame.id = frameId;
             frame.className = 'content-frame hidden';
             frame.sandbox = 'allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation';
-            
+
             // Handle CSP errors gracefully
             frame.onerror = function() {
                 console.warn(`Failed to load ${url} in iframe due to CSP restrictions`);
@@ -2371,7 +2409,7 @@
                     loadingOverlay.remove();
                 }
             };
-            
+
             // Handle load completion for SkIDEancer
             if (isSkIDEancer) {
                 frame.onload = function() {
@@ -2387,10 +2425,10 @@
                     }, 8000); // Total 8 seconds delay (5s initial + 3s additional) for SkIDEancer to load
                 };
             }
-            
+
             frame.src = url;
             document.getElementById('contentArea').appendChild(frame);
-            
+
             // Create tab data
             tabs[tabId] = {
                 title: title,
@@ -2399,7 +2437,7 @@
                 frame: frame,
                 loadingOverlay: loadingOverlay
             };
-            
+
             // Create tab element
             const tabElement = document.createElement('div');
             tabElement.className = 'tab';
@@ -2412,17 +2450,17 @@
                     <i class="fas fa-times"></i>
                 </button>
             `;
-            
+
             // Add to tabs container
             document.getElementById('tabsContainer').appendChild(tabElement);
-            
+
             // Switch to new tab
             switchToTab(tabId);
-            
+
             // Scroll to show new tab
             scrollToTab(tabElement);
         }
-        
+
         function switchToTab(tabId) {
             // Remove active class from all tabs and hide all frames
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
@@ -2431,7 +2469,7 @@
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
-            
+
             // Add active class to selected tab and show its frame
             const tabElement = document.getElementById(tabId);
             if (tabElement) {
@@ -2443,7 +2481,7 @@
                 activeTab = tabId;
                 updateAddressBar(tabs[tabId].url);
             }
-            
+
             // Handle special case for dashboard
             if (tabId === 'dashboard') {
                 document.querySelectorAll('.nav-item').forEach(item => {
@@ -2453,7 +2491,7 @@
                 });
             }
         }
-        
+
         function closeTab(tabId) {
             const tabElement = document.getElementById(tabId);
             if (tabElement) {
@@ -2468,7 +2506,7 @@
                 }
                 delete tabs[tabId];
             }
-            
+
             // If closed tab was active, switch to first available tab
             if (activeTab === tabId) {
                 const remainingTabs = Object.keys(tabs);
@@ -2479,60 +2517,60 @@
                 }
             }
         }
-        
+
         function scrollTabs(direction) {
             const container = document.getElementById('tabsContainer');
             const scrollAmount = 200;
-            
+
             if (direction === 'left') {
                 container.scrollLeft -= scrollAmount;
             } else {
                 container.scrollLeft += scrollAmount;
             }
         }
-        
+
         function scrollToTab(tabElement) {
             const container = document.getElementById('tabsContainer');
             const tabRect = tabElement.getBoundingClientRect();
             const containerRect = container.getBoundingClientRect();
-            
+
             if (tabRect.right > containerRect.right) {
                 container.scrollLeft += tabRect.right - containerRect.right + 20;
             } else if (tabRect.left < containerRect.left) {
                 container.scrollLeft -= containerRect.left - tabRect.left + 20;
             }
         }
-        
+
         // Browser Navigation
         function goBack() {
             if (tabs[activeTab]) {
                 tabs[activeTab].frame.contentWindow.history.back();
             }
         }
-        
+
         function goForward() {
             if (tabs[activeTab]) {
                 tabs[activeTab].frame.contentWindow.history.forward();
             }
         }
-        
+
         function refreshPage() {
              if (tabs[activeTab]) {
                 tabs[activeTab].frame.src = tabs[activeTab].frame.src;
             }
         }
-        
+
         function goHome() {
             switchToTab('dashboard');
         }
-        
+
         function handleAddressBarEnter(event) {
             if (event.key === 'Enter') {
                 const url = event.target.value;
                 navigateToUrl(url);
             }
         }
-        
+
         function navigateToUrl(url) {
             // Add protocol if missing
             if (!url.startsWith('http://') && !url.startsWith('https://')) {
@@ -2543,7 +2581,7 @@
                     url = 'https://www.google.com/search?q=' + encodeURIComponent(url);
                 }
             }
-            
+
             if (activeTab && tabs[activeTab]) {
                 tabs[activeTab].url = url;
                 tabs[activeTab].frame.src = url;
@@ -2552,17 +2590,17 @@
                 createNewTab(url, 'New Tab');
             }
         }
-        
+
         function updateAddressBar(url) {
             document.getElementById('addressBar').value = url;
         }
-        
+
         // Settings Management
         function toggleSettings() {
             const panel = document.getElementById('settingsPanel');
             const overlay = document.getElementById('overlay');
             const isOpen = panel.classList.contains('open');
-            
+
             if (isOpen) {
                 panel.classList.remove('open');
                 overlay.classList.remove('active');
@@ -2572,13 +2610,13 @@
                 overlay.classList.add('active');
             }
         }
-        
+
         // Extensions Management
         function toggleExtensions() {
             const panel = document.getElementById('extensionsPanel');
             const overlay = document.getElementById('overlay');
             const isOpen = panel.classList.contains('open');
-            
+
             if (isOpen) {
                 panel.classList.remove('open');
                 overlay.classList.remove('active');
@@ -2605,7 +2643,7 @@
                 loadPromptManager();
             }
         }
-        
+
         function closeAllPanels(keepOverlay = false) {
             document.getElementById('settingsPanel').classList.remove('open');
             document.getElementById('extensionsPanel').classList.remove('open');
@@ -2614,9 +2652,9 @@
                 document.getElementById('overlay').classList.remove('active');
             }
         }
-        
+
         // Terminal functionality removed - SkIDEancer has its own integrated terminal
-        
+
         // Browser Features - Fully Functional Implementation
         function toggleBookmarks() {
             try {
@@ -2624,7 +2662,7 @@
                 if (window.electron && window.electron.ipcRenderer) {
                     window.electron.ipcRenderer.invoke('browser:toggle-bookmarks');
                 }
-                
+
                 // Create bookmarks panel if it doesn't exist
                 let bookmarksPanel = document.getElementById('bookmarksPanel');
                 if (!bookmarksPanel) {
@@ -2655,7 +2693,7 @@
                     `;
                     document.body.appendChild(bookmarksPanel);
                 }
-                
+
                 // Toggle panel visibility
                 bookmarksPanel.classList.toggle('visible');
                 showNotification('Bookmarks panel toggled');
@@ -2664,14 +2702,14 @@
                 showNotification('Bookmarks feature temporarily unavailable', 'error');
             }
         }
-        
+
         function showHistory() {
             try {
                 // Try Electron API first
                 if (window.electron && window.electron.ipcRenderer) {
                     window.electron.ipcRenderer.invoke('browser:show-history');
                 }
-                
+
                 // Create history panel
                 let historyPanel = document.getElementById('historyPanel');
                 if (!historyPanel) {
@@ -2697,7 +2735,7 @@
                     `;
                     document.body.appendChild(historyPanel);
                 }
-                
+
                 historyPanel.classList.add('visible');
                 showNotification('History panel opened');
             } catch (error) {
@@ -2705,14 +2743,14 @@
                 showNotification('History feature temporarily unavailable', 'error');
             }
         }
-        
+
         function showDownloads() {
             try {
                 // Try Electron API first
                 if (window.electron && window.electron.ipcRenderer) {
                     window.electron.ipcRenderer.invoke('browser:show-downloads');
                 }
-                
+
                 // Create downloads panel
                 let downloadsPanel = document.getElementById('downloadsPanel');
                 if (!downloadsPanel) {
@@ -2740,7 +2778,7 @@
                     `;
                     document.body.appendChild(downloadsPanel);
                 }
-                
+
                 downloadsPanel.classList.add('visible');
                 showNotification('Downloads panel opened');
             } catch (error) {
@@ -2748,16 +2786,16 @@
                 showNotification('Downloads feature temporarily unavailable', 'error');
             }
         }
-        
+
         // toggleDevTools function moved below - consolidated with settings version
-        
+
         function captureScreenshot() {
             try {
                 // Try Electron API first
                 if (window.electron && window.electron.ipcRenderer) {
                     window.electron.ipcRenderer.invoke('browser:screenshot');
                 }
-                
+
                 // Use HTML5 Canvas for screenshot
                 html2canvas(document.body).then(canvas => {
                     const link = document.createElement('a');
@@ -2774,14 +2812,14 @@
                 showScreenshotDialog();
             }
         }
-        
+
         function showMore() {
             try {
                 // Try Electron API first
                 if (window.electron && window.electron.ipcRenderer) {
                     window.electron.ipcRenderer.invoke('browser:show-more');
                 }
-                
+
                 // Create more options menu
                 let moreMenu = document.getElementById('moreOptionsMenu');
                 if (!moreMenu) {
@@ -2827,13 +2865,13 @@
                         </div>
                     `;
                     document.body.appendChild(moreMenu);
-                    
+
                     // Position menu
                     const moreBtn = document.querySelector('.action-btn[onclick="showMore()"]');
                     const rect = moreBtn.getBoundingClientRect();
                     moreMenu.style.top = `${rect.bottom + 5}px`;
                     moreMenu.style.right = `${window.innerWidth - rect.right}px`;
-                    
+
                     // Close menu when clicking outside
                     setTimeout(() => {
                         document.addEventListener('click', (e) => {
@@ -2843,7 +2881,7 @@
                         });
                     }, 0);
                 }
-                
+
                 moreMenu.classList.add('visible');
                 showNotification('More options opened');
             } catch (error) {
@@ -2851,7 +2889,7 @@
                 showNotification('More options temporarily unavailable', 'error');
             }
         }
-        
+
         // Custom Input Modal
         let customInputCallback;
         function showCustomInput(title, fields, callback) {
@@ -2889,7 +2927,7 @@
 
         // Custom Menu Items
         let customMenuItems = JSON.parse(localStorage.getItem('customMenuItems') || '[]');
-        
+
         function addCustomMenuItem() {
             showCustomInput('Add Custom Link', [
                 {label: 'Name', name: 'name'},
@@ -2902,26 +2940,26 @@
                     url: result.url,
                     icon: result.icon || 'fas fa-link'
                 };
-                
+
                 customMenuItems.push(menuItem);
                 localStorage.setItem('customMenuItems', JSON.stringify(customMenuItems));
                 renderCustomMenuItems();
             });
         }
-        
+
         function removeCustomMenuItem(itemId) {
             customMenuItems = customMenuItems.filter(item => item.id !== itemId);
             localStorage.setItem('customMenuItems', JSON.stringify(customMenuItems));
             renderCustomMenuItems();
         }
-        
+
         function renderCustomMenuItems() {
             const customSection = document.querySelector('#custom-links-section');
             const addButton = customSection.querySelector('.add-menu-item');
-            
+
             // Remove existing custom items
             customSection.querySelectorAll('.nav-item:not(.add-menu-item)').forEach(item => item.remove());
-            
+
             // Add custom menu items
             customMenuItems.forEach(item => {
                 const navItem = document.createElement('div');
@@ -2935,32 +2973,32 @@
                         <i class="fas fa-times" style="font-size: 10px;"></i>
                     </button>
                 `;
-                
+
                 navItem.onclick = (e) => {
                     if (e.target.closest('.terminal-btn')) return;
                     createNewTab(item.url, item.name);
                 };
-                
+
                 customSection.insertBefore(navItem, addButton);
             });
-            
+
             // Reinitialize drag and drop
             initDragAndDrop();
         }
-        
+
         // Account Functions
         function openAccount() {
             createNewTab('http://localhost:3000/account', 'Account');
         }
-        
+
         function openSettings() {
             toggleSettings();
         }
-        
+
         function openSignIn() {
             createNewTab('http://localhost:3000/auth/signin', 'Sign In');
         }
-        
+
         // Prompt Manager Functions
         let promptTemplates = [];
         let promptFolders = JSON.parse(localStorage.getItem('promptFolders') || '[]');
@@ -3009,15 +3047,15 @@
                 console.warn('prompt-templates-list element not found');
                 return;
             }
-            
+
             list.innerHTML = '';
-            
+
             // Ensure promptTemplates is an array
             if (!Array.isArray(promptTemplates)) {
                 console.warn('promptTemplates is not an array:', promptTemplates);
                 promptTemplates = [];
             }
-            
+
             promptTemplates.forEach(prompt => {
                 const item = document.createElement('div');
                 item.className = 'extension-item'; // Re-use styling
@@ -3031,7 +3069,7 @@
                 list.appendChild(item);
             });
         }
-        
+
         function renderPromptFolders() {
             const list = document.getElementById('prompt-folders-list');
             list.innerHTML = '';
@@ -3104,84 +3142,84 @@
             toggle.classList.toggle('active');
             // Implementation for dark mode
         }
-        
+
         function toggleAdBlock(toggle) {
             toggle.classList.toggle('active');
             // Implementation for ad blocking
         }
-        
+
         function toggleClearCookies(toggle) {
             toggle.classList.toggle('active');
             // Implementation for cookie clearing
         }
-        
+
         function toggleThirdPartyCookies(toggle) {
             toggle.classList.toggle('active');
             // Implementation for third-party cookie blocking
         }
-        
+
         function toggleDoNotTrack(toggle) {
             toggle.classList.toggle('active');
             // Implementation for Do Not Track
         }
-        
+
         function toggleDevTools(toggle) {
             // If called from settings toggle
             if (toggle && toggle.classList) {
                 toggle.classList.toggle('active');
             }
-            
+
             // Core dev tools functionality
             try {
                 // Try Electron API first
                 if (window.electron && window.electron.ipcRenderer) {
                     window.electron.ipcRenderer.invoke('browser:toggle-devtools');
                 }
-                
+
                 // Open DevTools in new tab as fallback
                 createNewTab('about:blank', 'DevTools');
-                
+
                 showNotification('Developer Tools toggled');
             } catch (error) {
                 console.error('DevTools error:', error);
                 showNotification('DevTools feature temporarily unavailable', 'error');
             }
         }
-        
+
         // Terminal integration removed - using SkIDEancer's built-in terminal
-        
+
         function toggleExtensionsEnabled(toggle) {
             toggle.classList.toggle('active');
             // Implementation for extensions
         }
-        
+
         // Browser Engine Switching - Real Implementation
         async function switchEngine(engine) {
             try {
                 console.log('Switching browser engine to:', engine);
-                
+
                 // Get current iframe and URL
                 const currentFrame = document.querySelector('.content-frame:not([style*="display: none"])');
                 const currentUrl = currentFrame ? currentFrame.src : 'about:blank';
-                
+
                 // Call IPC handler to switch browser engine
                 if (window.electron && window.electron.ipcRenderer) {
                     const result = await window.electron.ipcRenderer.invoke('browser:set-engine', engine);
                     console.log('Browser engine switch result:', result);
                 }
-                
+
                 // Update iframe for different rendering engines
                 if (currentFrame) {
                     const frameContainer = currentFrame.parentElement;
-                    
+
                     // Remove current frame
                     currentFrame.remove();
-                    
+
                     // Create new frame with engine-specific configuration
                     const newFrame = document.createElement('iframe');
                     newFrame.className = 'content-frame';
                     newFrame.name = 'browserFrame';
-                    
+
                     // Configure based on engine
                     switch (engine) {
                         case 'chromium':
@@ -3190,7 +3228,7 @@
                             newFrame.setAttribute('allow', 'camera; microphone; geolocation; payment; fullscreen');
                             newFrame.style.webkitAppearance = 'none';
                             break;
-                            
+
                         case 'webkit':
                             // WebKit-specific configuration
                             newFrame.src = currentUrl;
@@ -3198,39 +3236,39 @@
                             newFrame.style.webkitTransform = 'scale(1)';
                             newFrame.style.webkitTransformOrigin = 'top left';
                             break;
-                            
+
                         case 'firefox':
                             // Firefox-like behavior simulation
                             newFrame.src = currentUrl;
                             newFrame.setAttribute('allow', 'camera; microphone; geolocation; payment; fullscreen');
                             newFrame.style.mozAppearance = 'none';
                             break;
-                            
+
                         default:
                             newFrame.src = currentUrl;
                     }
-                    
+
                     // Add frame to container
                     frameContainer.appendChild(newFrame);
-                    
+
                     // Update user agent simulation
                     updateUserAgentForEngine(engine);
-                    
+
                     // Apply engine-specific CSS modifications
                     applyEngineSpecificStyles(engine);
-                    
+
                     // Update engine indicator
                     updateEngineIndicator(engine);
                 }
-                
+
                 showNotification(`Browser engine switched to ${engine.charAt(0).toUpperCase() + engine.slice(1)}`, 'success');
-                
+
             } catch (error) {
                 console.error('Failed to switch browser engine:', error);
                 showNotification('Failed to switch browser engine', 'error');
             }
         }
-        
+
         function updateUserAgentForEngine(engine) {
             // Simulate different user agents for different engines
             const userAgents = {
@@ -3238,25 +3276,25 @@
                 webkit: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15',
                 firefox: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:120.0) Gecko/20100101 Firefox/120.0'
             };
-            
+
             // Store current engine preference
             localStorage.setItem('selectedBrowserEngine', engine);
             localStorage.setItem('simulatedUserAgent', userAgents[engine]);
-            
+
             console.log(`User agent updated for ${engine}:`, userAgents[engine]);
         }
-        
+
         function applyEngineSpecificStyles(engine) {
             // Remove previous engine styles
             const existingStyle = document.getElementById('engine-specific-styles');
             if (existingStyle) {
                 existingStyle.remove();
             }
-            
+
             // Create new engine-specific styles
             const style = document.createElement('style');
             style.id = 'engine-specific-styles';
-            
+
             switch (engine) {
                 case 'chromium':
                     style.textContent = `
@@ -3271,7 +3309,7 @@
                         }
                     `;
                     break;
-                    
+
                 case 'webkit':
                     style.textContent = `
                         .content-frame {
@@ -3285,7 +3323,7 @@
                         }
                     `;
                     break;
-                    
+
                 case 'firefox':
                     style.textContent = `
                         .content-frame {
@@ -3300,10 +3338,10 @@
                     `;
                     break;
             }
-            
+
             document.head.appendChild(style);
         }
-        
+
         function updateEngineIndicator(engine) {
             // Update engine selector
             const selector = document.getElementById('engineSelector');
@@ -3314,7 +3352,7 @@
                     selector.style.borderColor = '#4a5568';
                 }, 1000);
             }
-            
+
             // Add visual indicator to the browser toolbar
             const toolbar = document.querySelector('.toolbar');
             if (toolbar) {
@@ -3323,7 +3361,7 @@
                 if (existingIndicator) {
                     existingIndicator.remove();
                 }
-                
+
                 // Add new engine indicator
                 const indicator = document.createElement('div');
                 indicator.className = 'engine-indicator';
@@ -3343,11 +3381,11 @@
                         pointer-events: none;
                     ">${engine}</div>
                 `;
-                
+
                 toolbar.appendChild(indicator);
             }
         }
-        
+
         function getEngineColor(engine) {
             const colors = {
                 chromium: '#4285f4',
@@ -3356,11 +3394,11 @@
             };
             return colors[engine] || '#6b7280';
         }
-        
+
         function initializeBrowserEngine() {
             // Load saved engine preference
             const savedEngine = localStorage.getItem('selectedBrowserEngine') || 'chromium';
-            
+
             // Update selector
             const selector = document.getElementById('engineSelector');
             if (selector) {
@@ -3369,7 +3407,7 @@
                 applyEngineSpecificStyles(savedEngine);
             }
         }
-        
+
         // Show notification (simple implementation)
         function showNotification(message, type = 'success') {
             const notification = document.createElement('div');
@@ -3387,14 +3425,14 @@
                 z-index: 10000;
                 animation: slideIn 0.3s ease;
             `;
-            
+
             document.body.appendChild(notification);
-            
+
             setTimeout(() => {
                 notification.remove();
             }, 3000);
         }
-        
+
         // Chrome Extension Management Functions
         async function openChromeStore() {
             try {
@@ -3406,7 +3444,7 @@
                 showNotification('Failed to open Chrome Web Store', 'error');
             }
         }
-        
+
         async function loadUnpackedExtension() {
             try {
                 // Use Electron's dialog to select extension directory
@@ -3415,15 +3453,15 @@
                         title: 'Select Extension Directory',
                         properties: ['openDirectory']
                     });
-                    
+
                     if (result && !result.canceled && result.filePaths.length > 0) {
                         const extensionPath = result.filePaths[0];
                         console.log('Loading extension from:', extensionPath);
-                        
+
                         // In a real implementation, this would load the extension
                         // For now, show a notification
                         showNotification(`Loading extension from: ${extensionPath}`);
-                        
+
                         // Add to installed extensions list
                         addExtensionToInstalledList({
                             name: `Local Extension (${extensionPath.split('/').pop()})`,
@@ -3442,22 +3480,22 @@
                 showNotification('Failed to load extension', 'error');
             }
         }
-        
+
         async function refreshInstalledExtensions() {
             try {
                 console.log('Refreshing installed extensions...');
-                
+
                 // Try to get real Chrome extensions
                 if (window.electron && window.electron.ipcRenderer) {
                     try {
                         // First try the new real Chrome integration
                         const realResult = await window.electron.ipcRenderer.invoke('chrome:get-real-extensions');
-                        
+
                         if (realResult.success) {
                             displayInstalledExtensions(realResult.extensions);
                             updateExtensionToolbar(realResult.extensions);
                             showNotification('Real Chrome extensions loaded!');
-                            
+
                             // Update extension count
                             const count = realResult.extensions.length;
                             const countElement = document.querySelector('.extension-count');
@@ -3466,12 +3504,12 @@
                             }
                             return;
                         }
-                        
+
                         // Fallback to old method
                         const extensions = await window.electron.ipcRenderer.invoke('extensions:get-installed');
                         displayInstalledExtensions(extensions);
                         showNotification('Extensions refreshed successfully');
-                        
+
                         // Update extension count
                         const count = extensions.length;
                         const countElement = document.querySelector('.extension-count');
@@ -3494,7 +3532,7 @@
                 showNotification('Failed to refresh extensions', 'error');
             }
         }
-        
+
         function updateExtensionToolbar(extensions) {
             // Update the extension toolbar with real Chrome extensions
             const enabledExtensions = extensions.filter(ext => ext.enabled).map(ext => ({
@@ -3507,14 +3545,14 @@
                 permissions: ext.permissions || [],
                 homepageUrl: ext.homepageUrl
             }));
-            
+
             renderExtensionToolbar(enabledExtensions);
         }
-        
+
         function displayInstalledExtensions(extensions) {
             const container = document.getElementById('installedExtensions');
             container.innerHTML = '';
-            
+
             if (extensions && extensions.length > 0) {
                 extensions.forEach(ext => {
                     addExtensionToInstalledList(ext);
@@ -3523,7 +3561,7 @@
                 container.innerHTML = '<p style="color: #9ca3af; text-align: center; padding: 20px;">No extensions found. Try refreshing or check Chrome extensions.</p>';
             }
         }
-        
+
         function displayMockInstalledExtensions() {
             const mockExtensions = [
                 { name: 'AdBlock', version: '4.42.0', enabled: true, type: 'chrome-store' },
@@ -3531,24 +3569,24 @@
                 { name: 'React DevTools', version: '4.28.5', enabled: false, type: 'chrome-store' },
                 { name: 'JSON Formatter', version: '0.7.1', enabled: true, type: 'chrome-store' }
             ];
-            
+
             displayInstalledExtensions(mockExtensions);
         }
-        
+
         function addExtensionToInstalledList(extension) {
             const container = document.getElementById('installedExtensions');
-            
+
             const item = document.createElement('div');
             item.className = 'installed-extension-item';
-            
+
             // Store extension ID for Chrome integration
             if (extension.id) {
                 item.dataset.extensionId = extension.id;
             }
-            
+
             const iconClass = extension.icon || 'fas fa-puzzle-piece';
             const permissions = extension.permissions ? extension.permissions.join(', ') : 'No permissions';
-            
+
             item.innerHTML = `
                 <div class="installed-extension-icon">
                     <i class="${iconClass}" style="color: #9ca3af;"></i>
@@ -3559,7 +3597,7 @@
                     ${extension.permissions ? `<div style="color: #6b7280; font-size: 10px; margin-top: 2px;">Permissions: ${permissions}</div>` : ''}
                 </div>
                 <div class="installed-extension-controls">
-                    <button class="extension-control-btn ${extension.enabled ? 'enabled' : ''}" 
+                    <button class="extension-control-btn ${extension.enabled ? 'enabled' : ''}"
                             onclick="toggleExtension('${extension.name}', this)">
                         ${extension.enabled ? 'Enabled' : 'Disabled'}
                     </button>
@@ -3574,14 +3612,14 @@
                     </button>
                 </div>
             `;
-            
+
             container.appendChild(item);
         }
-        
+
         async function openExtensionHomepage(url) {
             createNewTab(url, 'Extension Homepage');
         }
-        
+
         async function openExtensionOptions(extensionId) {
             if (window.electron && window.electron.ipcRenderer) {
                 try {
@@ -3600,10 +3638,10 @@
                 createNewTab(`chrome-extension://${extensionId}/options.html`, 'Extension Options');
             }
         }
-        
+
         async function toggleExtension(extensionName, button) {
             const isEnabled = button.classList.contains('enabled');
-            
+
             // Try real Chrome integration first
             if (window.electron && window.electron.ipcRenderer) {
                 try {
@@ -3612,7 +3650,7 @@
                         const nameElement = item.querySelector('.installed-extension-name');
                         return nameElement && nameElement.textContent === extensionName;
                     });
-                    
+
                     if (extensionData) {
                         const extensionId = extensionData.dataset.extensionId;
                         if (extensionId) {
@@ -3635,7 +3673,7 @@
                     console.error('Chrome integration failed:', error);
                 }
             }
-            
+
             // Fallback to mock functionality
             if (isEnabled) {
                 button.classList.remove('enabled');
@@ -3647,7 +3685,7 @@
                 showNotification(`${extensionName} enabled`);
             }
         }
-        
+
         function removeExtension(extensionName) {
             if (confirm(`Are you sure you want to remove ${extensionName}?`)) {
                 // Find and remove the extension item
@@ -3658,12 +3696,12 @@
                         item.remove();
                     }
                 });
-                
+
                 // Remove from extension toolbar
                 removeExtensionFromToolbar(extensionName);
-                
+
                 showNotification(`${extensionName} removed`);
-                
+
                 // Update extension count
                 const remainingItems = document.querySelectorAll('.installed-extension-item').length;
                 const countElement = document.querySelector('.extension-count');
@@ -3672,65 +3710,65 @@
                 }
             }
         }
-        
+
         // Extension Toolbar Management
         let extensionToolbarState = {};
         let currentExtensionPopup = null;
-        
+
         function initializeExtensionToolbar() {
             // Create extension toolbar icons for popular extensions
             const popularExtensions = [
-                { 
-                    name: 'AdBlock', 
-                    icon: 'fas fa-shield-alt', 
-                    badgeText: '', 
+                {
+                    name: 'AdBlock',
+                    icon: 'fas fa-shield-alt',
+                    badgeText: '',
                     enabled: true,
                     description: 'Block ads and trackers'
                 },
-                { 
-                    name: 'LastPass', 
-                    icon: 'fas fa-key', 
-                    badgeText: '3', 
+                {
+                    name: 'LastPass',
+                    icon: 'fas fa-key',
+                    badgeText: '3',
                     enabled: true,
                     description: 'Password manager'
                 },
-                { 
-                    name: 'React DevTools', 
-                    icon: 'fab fa-react', 
-                    badgeText: '', 
+                {
+                    name: 'React DevTools',
+                    icon: 'fab fa-react',
+                    badgeText: '',
                     enabled: false,
                     description: 'Debug React components'
                 },
-                { 
-                    name: 'JSON Formatter', 
-                    icon: 'fas fa-code', 
-                    badgeText: '', 
+                {
+                    name: 'JSON Formatter',
+                    icon: 'fas fa-code',
+                    badgeText: '',
                     enabled: true,
                     description: 'Format JSON responses'
                 },
-                { 
-                    name: 'Grammarly', 
-                    icon: 'fas fa-spell-check', 
-                    badgeText: '2', 
+                {
+                    name: 'Grammarly',
+                    icon: 'fas fa-spell-check',
+                    badgeText: '2',
                     enabled: true,
                     description: 'Writing assistant'
                 },
-                { 
-                    name: 'Dark Reader', 
-                    icon: 'fas fa-moon', 
-                    badgeText: '', 
+                {
+                    name: 'Dark Reader',
+                    icon: 'fas fa-moon',
+                    badgeText: '',
                     enabled: true,
                     description: 'Dark mode for websites'
                 }
             ];
-            
+
             renderExtensionToolbar(popularExtensions);
         }
-        
+
         function renderExtensionToolbar(extensions) {
             const toolbar = document.getElementById('extensionToolbar');
             toolbar.innerHTML = '';
-            
+
             extensions.filter(ext => ext.enabled).forEach(extension => {
                 const iconBtn = document.createElement('button');
                 iconBtn.className = 'extension-icon-btn';
@@ -3740,14 +3778,14 @@
                     e.preventDefault();
                     showExtensionContextMenu(extension, e);
                 };
-                
+
                 iconBtn.innerHTML = `
                     <i class="${extension.icon}"></i>
                     ${extension.badgeText ? `<span class="extension-badge visible">${extension.badgeText}</span>` : '<span class="extension-badge"></span>'}
                 `;
-                
+
                 toolbar.appendChild(iconBtn);
-                
+
                 // Store extension state
                 extensionToolbarState[extension.name] = {
                     element: iconBtn,
@@ -3755,16 +3793,16 @@
                 };
             });
         }
-        
+
         function openExtensionPopup(extension, buttonElement) {
             // Close any existing popup
             closeExtensionPopup();
-            
+
             // Create popup
             const popup = document.createElement('div');
             popup.className = 'extension-popup visible';
             popup.id = 'extensionPopup';
-            
+
             popup.innerHTML = `
                 <div class="extension-popup-header">
                     <div class="extension-popup-icon">
@@ -3779,23 +3817,23 @@
                     ${getExtensionPopupContent(extension)}
                 </div>
             `;
-            
+
             // Position popup relative to button
             buttonElement.style.position = 'relative';
             buttonElement.appendChild(popup);
             buttonElement.classList.add('active');
-            
+
             currentExtensionPopup = {
                 popup: popup,
                 button: buttonElement
             };
-            
+
             // Close popup when clicking outside
             setTimeout(() => {
                 document.addEventListener('click', handleExtensionPopupOutsideClick);
             }, 0);
         }
-        
+
         function closeExtensionPopup() {
             if (currentExtensionPopup) {
                 currentExtensionPopup.popup.remove();
@@ -3804,13 +3842,13 @@
                 currentExtensionPopup = null;
             }
         }
-        
+
         function handleExtensionPopupOutsideClick(e) {
             if (currentExtensionPopup && !currentExtensionPopup.popup.contains(e.target)) {
                 closeExtensionPopup();
             }
         }
-        
+
         function getExtensionPopupContent(extension) {
             // Generate extension-specific content
             switch (extension.name) {
@@ -3832,7 +3870,7 @@
                             </button>
                         </div>
                     `;
-                    
+
                 case 'LastPass':
                     return `
                         <div style="text-align: center;">
@@ -3849,7 +3887,7 @@
                             </button>
                         </div>
                     `;
-                    
+
                 case 'React DevTools':
                     return `
                         <div style="text-align: center;">
@@ -3860,7 +3898,7 @@
                             </button>
                         </div>
                     `;
-                    
+
                 case 'JSON Formatter':
                     return `
                         <div style="text-align: center;">
@@ -3874,7 +3912,7 @@
                             </button>
                         </div>
                     `;
-                    
+
                 case 'Grammarly':
                     return `
                         <div style="text-align: center;">
@@ -3888,7 +3926,7 @@
                             </button>
                         </div>
                     `;
-                    
+
                 case 'Dark Reader':
                     return `
                         <div style="text-align: center;">
@@ -3903,7 +3941,7 @@
                             </button>
                         </div>
                     `;
-                    
+
                 default:
                     return `
                         <div style="text-align: center;">
@@ -3916,14 +3954,14 @@
                     `;
             }
         }
-        
+
         function removeExtensionFromToolbar(extensionName) {
             if (extensionToolbarState[extensionName]) {
                 extensionToolbarState[extensionName].element.remove();
                 delete extensionToolbarState[extensionName];
             }
         }
-        
+
         function updateExtensionBadge(extensionName, badgeText) {
             if (extensionToolbarState[extensionName]) {
                 const badge = extensionToolbarState[extensionName].element.querySelector('.extension-badge');
@@ -3933,58 +3971,58 @@
                 }
             }
         }
-        
+
         // Extension Action Functions
         function toggleAdBlockOnSite() {
             showNotification('AdBlock paused on this site');
             closeExtensionPopup();
         }
-        
+
         function fillPassword() {
             showNotification('Password filled');
             closeExtensionPopup();
         }
-        
+
         function openLastPassVault() {
             createNewTab('https://lastpass.com/vault/', 'LastPass Vault');
             closeExtensionPopup();
         }
-        
+
         function openReactDevTools() {
             toggleDevTools();
             showNotification('React DevTools opened in DevTools panel');
             closeExtensionPopup();
         }
-        
+
         function formatCurrentPageJSON() {
             showNotification('JSON formatted on current page');
             closeExtensionPopup();
         }
-        
+
         function openJSONValidator() {
             createNewTab('https://jsonlint.com/', 'JSON Validator');
             closeExtensionPopup();
         }
-        
+
         function showGrammarSuggestions() {
             showNotification('Grammar suggestions highlighted');
             closeExtensionPopup();
         }
-        
+
         function adjustBrightness(value) {
             showNotification(`Brightness set to ${value}%`);
         }
-        
+
         function toggleDarkMode() {
             showNotification('Dark mode toggled');
             closeExtensionPopup();
         }
-        
+
         function openExtensionOptions(extensionName) {
             createNewTab(`chrome-extension://options/${extensionName}`, `${extensionName} Options`);
             closeExtensionPopup();
         }
-        
+
         // Extension Context Menu
         function showExtensionContextMenu(extension, event) {
             // Remove any existing context menu
@@ -3992,67 +4030,67 @@
             if (existingMenu) {
                 existingMenu.remove();
             }
-            
+
             // Create context menu
             const contextMenu = document.createElement('div');
             contextMenu.id = 'extensionContextMenu';
             contextMenu.className = 'extension-context-menu';
-            
+
             const menuItems = [
-                { 
-                    text: `Open ${extension.name}`, 
+                {
+                    text: `Open ${extension.name}`,
                     icon: 'fas fa-external-link-alt',
                     action: () => openExtensionPopup(extension, event.target)
                 },
-                { 
-                    text: 'Extension Options', 
+                {
+                    text: 'Extension Options',
                     icon: 'fas fa-cog',
                     action: () => openExtensionOptions(extension.id || extension.name)
                 },
-                { 
-                    text: 'Pin to Toolbar', 
+                {
+                    text: 'Pin to Toolbar',
                     icon: 'fas fa-thumbtack',
                     action: () => pinExtensionToToolbar(extension.name)
                 },
-                { 
-                    text: 'Remove from Toolbar', 
+                {
+                    text: 'Remove from Toolbar',
                     icon: 'fas fa-eye-slash',
                     action: () => removeExtensionFromToolbar(extension.name)
                 },
-                { 
-                    text: 'Manage Extension', 
+                {
+                    text: 'Manage Extension',
                     icon: 'fas fa-sliders-h',
                     action: () => manageExtension(extension)
                 },
-                { 
-                    text: 'Report Issue', 
+                {
+                    text: 'Report Issue',
                     icon: 'fas fa-bug',
                     action: () => reportExtensionIssue(extension)
                 }
             ];
-            
+
             contextMenu.innerHTML = menuItems.map(item => `
                 <div class="context-menu-item" onclick="${item.action.name}('${extension.name || extension.id}'); closeExtensionContextMenu()">
                     <i class="${item.icon}"></i>
                     <span>${item.text}</span>
                 </div>
             `).join('');
-            
+
             // Position menu
             contextMenu.style.left = `${event.pageX}px`;
             contextMenu.style.top = `${event.pageY}px`;
-            
+
             document.body.appendChild(contextMenu);
-            
+
             // Store menu items for execution
             contextMenu.menuActions = menuItems;
-            
+
             // Close menu when clicking outside
             setTimeout(() => {
                 document.addEventListener('click', closeExtensionContextMenu);
             }, 0);
         }
-        
+
         function closeExtensionContextMenu() {
             const menu = document.getElementById('extensionContextMenu');
             if (menu) {
@@ -4060,45 +4098,45 @@
                 document.removeEventListener('click', closeExtensionContextMenu);
             }
         }
-        
+
         function pinExtensionToToolbar(extensionName) {
             showNotification(`${extensionName} pinned to toolbar`);
         }
-        
+
         function manageExtension(extension) {
             createNewTab('chrome://extensions/', 'Manage Extensions');
             showNotification(`Opening Chrome Extensions for ${extension.name}`);
         }
-        
+
         function reportExtensionIssue(extension) {
             const reportUrl = extension.homepageUrl || `https://chrome.google.com/webstore/detail/${extension.id}`;
             createNewTab(reportUrl, 'Report Extension Issue');
             showNotification(`Opening ${extension.name} page to report issue`);
         }
-        
+
         // Extension Search and Filtering
         let allExtensions = [];
-        
+
         function filterExtensions(searchTerm) {
             const clearBtn = document.querySelector('.search-clear');
             clearBtn.style.display = searchTerm ? 'block' : 'none';
-            
-            const filteredExtensions = allExtensions.filter(ext => 
+
+            const filteredExtensions = allExtensions.filter(ext =>
                 ext.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 (ext.description && ext.description.toLowerCase().includes(searchTerm.toLowerCase()))
             );
-            
+
             displayFilteredExtensions(filteredExtensions);
             updateExtensionCount(filteredExtensions.length);
         }
-        
+
         function filterExtensionsByCategory(category) {
             if (!category) {
                 displayFilteredExtensions(allExtensions);
                 updateExtensionCount(allExtensions.length);
                 return;
             }
-            
+
             const categoryMap = {
                 'productivity': ['grammarly', 'lastpass', 'notion', 'todoist'],
                 'security': ['adblock', 'lastpass', 'privacy badger', 'ghostery'],
@@ -4106,52 +4144,52 @@
                 'social': ['facebook', 'twitter', 'instagram', 'linkedin'],
                 'shopping': ['honey', 'rakuten', 'amazon', 'ebay']
             };
-            
+
             const filteredExtensions = allExtensions.filter(ext => {
                 const extName = ext.name.toLowerCase();
                 return categoryMap[category].some(keyword => extName.includes(keyword));
             });
-            
+
             displayFilteredExtensions(filteredExtensions);
             updateExtensionCount(filteredExtensions.length);
         }
-        
+
         function filterExtensionsByStatus(status) {
             if (!status) {
                 displayFilteredExtensions(allExtensions);
                 updateExtensionCount(allExtensions.length);
                 return;
             }
-            
-            const filteredExtensions = allExtensions.filter(ext => 
+
+            const filteredExtensions = allExtensions.filter(ext =>
                 status === 'enabled' ? ext.enabled : !ext.enabled
             );
-            
+
             displayFilteredExtensions(filteredExtensions);
             updateExtensionCount(filteredExtensions.length);
         }
-        
+
         function clearExtensionSearch() {
             const searchInput = document.getElementById('extensionSearchInput');
             const clearBtn = document.querySelector('.search-clear');
             const categoryFilter = document.getElementById('extensionCategoryFilter');
             const statusFilter = document.getElementById('extensionStatusFilter');
-            
+
             searchInput.value = '';
             clearBtn.style.display = 'none';
             categoryFilter.value = '';
             statusFilter.value = '';
-            
+
             displayFilteredExtensions(allExtensions);
             updateExtensionCount(allExtensions.length);
-            
+
             showNotification('Search filters cleared');
         }
-        
+
         function displayFilteredExtensions(extensions) {
             const container = document.getElementById('installedExtensions');
             container.innerHTML = '';
-            
+
             if (extensions.length === 0) {
                 container.innerHTML = `
                     <div style="text-align: center; padding: 40px 20px; color: #6b7280;">
@@ -4162,27 +4200,27 @@
                 `;
                 return;
             }
-            
+
             extensions.forEach(extension => addExtensionToInstalledList(extension));
         }
-        
+
         function updateExtensionCount(count) {
             const countElement = document.getElementById('extensionCount');
             if (countElement) {
                 countElement.textContent = `(${count})`;
             }
         }
-        
+
         // Update the existing function to store all extensions
         function displayInstalledExtensions(extensions) {
             allExtensions = extensions; // Store for filtering
             const container = document.getElementById('installedExtensions');
             container.innerHTML = '';
-            
+
             extensions.forEach(extension => addExtensionToInstalledList(extension));
             updateExtensionCount(extensions.length);
         }
-        
+
         // Helper Functions for Browser Features
         function generateBookmarkList() {
             const bookmarks = [
@@ -4194,7 +4232,7 @@
                 { title: 'Claude AI', url: 'https://claude.ai', folder: 'AI Tools' },
                 { title: 'ChatGPT', url: 'https://chat.openai.com', folder: 'AI Tools' }
             ];
-            
+
             return bookmarks.map(bookmark => `
                 <div class="list-item" onclick="navigateToBookmark('${bookmark.url}')">
                     <div class="list-item-icon">
@@ -4215,7 +4253,7 @@
                 </div>
             `).join('');
         }
-        
+
         function generateHistoryList() {
             const history = [
                 { title: 'TNF Dashboard - AI-Powered Collaboration Platform', url: 'http://localhost:3000', time: '2 minutes ago' },
@@ -4226,7 +4264,7 @@
                 { title: 'OpenAI ChatGPT', url: 'https://chat.openai.com', time: '2 hours ago' },
                 { title: 'VS Code Extensions Marketplace', url: 'https://marketplace.visualstudio.com', time: '3 hours ago' }
             ];
-            
+
             return history.map(item => `
                 <div class="list-item" onclick="navigateToHistory('${item.url}')">
                     <div class="list-item-icon">
@@ -4247,7 +4285,7 @@
                 </div>
             `).join('');
         }
-        
+
         function generateDownloadsList() {
             const downloads = [
                 { title: 'skideancer-extensions-pack.vsix', size: '2.4 MB', status: 'completed', time: '5 minutes ago' },
@@ -4256,7 +4294,7 @@
                 { title: 'tnf-backup-20250118.zip', size: '45.2 MB', status: 'completed', time: '1 day ago' },
                 { title: 'react-devtools-extension.crx', size: '1.2 MB', status: 'completed', time: '2 days ago' }
             ];
-            
+
             return downloads.map(download => `
                 <div class="list-item">
                     <div class="list-item-icon">
@@ -4280,7 +4318,7 @@
                 </div>
             `).join('');
         }
-        
+
         // Panel Management Functions
         function closePanel(panelId) {
             const panel = document.getElementById(panelId);
@@ -4289,18 +4327,18 @@
                 setTimeout(() => panel.remove(), 300);
             }
         }
-        
+
         // Bookmark Functions
         function navigateToBookmark(url) {
             createNewTab(url, 'Bookmark');
             showNotification('Opening bookmark');
         }
-        
+
         function addBookmark() {
             const currentFrame = document.querySelector('.content-frame:not([style*="display: none"])');
             const currentUrl = currentFrame ? currentFrame.src : window.location.href;
             const title = prompt('Bookmark title:', 'New Bookmark') || 'New Bookmark';
-            
+
             // Add to bookmarks list
             const bookmarkList = document.getElementById('bookmarkList');
             if (bookmarkList) {
@@ -4325,23 +4363,23 @@
                 `;
                 bookmarkList.appendChild(bookmarkItem);
             }
-            
+
             showNotification(`Bookmark "${title}" added`);
         }
-        
+
         function editBookmark(title) {
             const newTitle = prompt('Edit bookmark title:', title);
             if (newTitle && newTitle !== title) {
                 showNotification(`Bookmark renamed to "${newTitle}"`);
             }
         }
-        
+
         function deleteBookmark(title) {
             if (confirm(`Delete bookmark "${title}"?`)) {
                 showNotification(`Bookmark "${title}" deleted`);
             }
         }
-        
+
         function importBookmarks() {
             if (window.electron && window.electron.ipcRenderer) {
                 window.electron.ipcRenderer.invoke('dialog:open-directory', {
@@ -4352,17 +4390,17 @@
             }
             showNotification('Import bookmarks feature coming soon');
         }
-        
+
         function exportBookmarks() {
             showNotification('Export bookmarks feature coming soon');
         }
-        
+
         // History Functions
         function navigateToHistory(url) {
             createNewTab(url, 'History');
             showNotification('Opening from history');
         }
-        
+
         function filterHistory(searchTerm) {
             const historyItems = document.querySelectorAll('#historyList .list-item');
             historyItems.forEach(item => {
@@ -4372,7 +4410,7 @@
                 item.style.display = matches ? 'flex' : 'none';
             });
         }
-        
+
         function clearHistory() {
             if (confirm('Clear all browsing history?')) {
                 const historyList = document.getElementById('historyList');
@@ -4382,15 +4420,15 @@
                 showNotification('Browsing history cleared');
             }
         }
-        
+
         function addToBookmarks(title, url) {
             showNotification(`"${title}" added to bookmarks`);
         }
-        
+
         function removeFromHistory(url) {
             showNotification('Removed from history');
         }
-        
+
         // Downloads Functions
         function openDownloadsFolder() {
             if (window.electron && window.electron.ipcRenderer) {
@@ -4399,7 +4437,7 @@
                 showNotification('Downloads folder: ~/Downloads');
             }
         }
-        
+
         function clearDownloads() {
             if (confirm('Clear downloads list?')) {
                 const downloadsList = document.getElementById('downloadsList');
@@ -4409,21 +4447,21 @@
                 showNotification('Downloads list cleared');
             }
         }
-        
+
         function openDownload(filename) {
             showNotification(`Opening ${filename}`);
         }
-        
+
         function showInFinder(filename) {
             showNotification(`Showing ${filename} in Finder`);
         }
-        
+
         function deleteDownload(filename) {
             if (confirm(`Delete ${filename}?`)) {
                 showNotification(`${filename} deleted`);
             }
         }
-        
+
         // Screenshot Functions
         function showScreenshotDialog() {
             const dialog = document.createElement('div');
@@ -4448,19 +4486,19 @@
             `;
             document.body.appendChild(dialog);
         }
-        
+
         function takeFullScreenshot() {
             showNotification('Full screenshot captured');
         }
-        
+
         function takeWindowScreenshot() {
             showNotification('Window screenshot captured');
         }
-        
+
         function takeSelectionScreenshot() {
             showNotification('Selection screenshot captured');
         }
-        
+
         // More Menu Functions
         function openNewWindow() {
             if (window.electron && window.electron.ipcRenderer) {
@@ -4468,30 +4506,30 @@
             }
             showNotification('New window opened');
         }
-        
+
         function openIncognito() {
             showNotification('Incognito mode coming soon');
         }
-        
+
         function printPage() {
             window.print();
         }
-        
+
         function findInPage() {
             showNotification('Find in page: Ctrl+F');
         }
-        
+
         function viewPageSource() {
             const currentFrame = document.querySelector('.content-frame:not([style*="display: none"])');
             if (currentFrame && currentFrame.src) {
                 createNewTab(`view-source:${currentFrame.src}`, 'Page Source');
             }
         }
-        
+
         function openSettings() {
             toggleSettings();
         }
-        
+
         function showAbout() {
             const aboutDialog = document.createElement('div');
             aboutDialog.className = 'browser-feature-panel visible';
@@ -4515,35 +4553,35 @@
             `;
             document.body.appendChild(aboutDialog);
         }
-        
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize drag and drop
             initDragAndDrop();
-            
+
             // Render custom menu items
             renderCustomMenuItems();
-            
+
             // Initialize extension toolbar
             initializeExtensionToolbar();
-            
+
             // Initialize browser engine
             initializeBrowserEngine();
-            
+
             // Initialize installed extensions on page load
             setTimeout(() => {
                 displayMockInstalledExtensions();
             }, 1000);
-            
+
             // Terminal functionality removed - using SkIDEancer's built-in terminal
-            
+
             // Initialize frame load handler
             document.querySelectorAll('.content-frame').forEach(frame => {
                 frame.onload = function() {
                     try {
                         const url = frame.contentWindow.location.href;
                         updateAddressBar(url);
-                        
+
                         // Update tab title if available
                         const title = frame.contentDocument.title;
                         const activeTabId = Object.keys(tabs).find(id => tabs[id].frame === frame);
@@ -4562,13 +4600,13 @@
                     }
                 };
             });
-            
+
             // Terminal auto-update removed - using SkIDEancer's built-in terminal
 
             // Set initial active tab
             switchToTab('dashboard');
         });
-        
+
         // Keyboard Shortcuts
         document.addEventListener('keydown', function(e) {
             // Ctrl/Cmd + T: New Tab
@@ -4576,7 +4614,7 @@
                 e.preventDefault();
                 createNewTab();
             }
-            
+
             // Ctrl/Cmd + W: Close Tab
             if ((e.ctrlKey || e.metaKey) && e.key === 'w') {
                 e.preventDefault();
@@ -4584,20 +4622,20 @@
                     closeTab(activeTab);
                 }
             }
-            
+
             // Ctrl/Cmd + R: Refresh
             if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
                 e.preventDefault();
                 refreshPage();
             }
-            
+
             // Ctrl/Cmd + L: Focus Address Bar
             if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
                 e.preventDefault();
                 document.getElementById('addressBar').focus();
                 document.getElementById('addressBar').select();
             }
-            
+
             // F12: Toggle Dev Tools
             if (e.key === 'F12') {
                 e.preventDefault();
