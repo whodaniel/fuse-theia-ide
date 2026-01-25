@@ -12,6 +12,8 @@
     "dev": "PORT=3007 node src-gen/backend/server.js",
     "clean": "rm -rf lib dist node_modules/.cache",
     "rebuild": "yarn run clean && yarn install && yarn run build",
+    "ide": "theia",
+    "ide:build": "yarn run theia:build",
     "theia:build": "theia build --mode production",
     "theia:start": "theia start",
     "theia": "theia"
