@@ -4,7 +4,7 @@
  * Server-side bindings for the AI Agent system
  */
 
-import { ContainerModule } from '@ide/core/shared/inversify';
+import { ContainerModule } from '@theia/core/shared/inversify';
 import { AgentService, AIFlowService } from '../common/types';
 import { AgentServiceImpl } from '../common/agent-service';
 import { AIFlowServiceImpl } from '../common/ai-flow-service';

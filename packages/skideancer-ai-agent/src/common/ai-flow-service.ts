@@ -10,8 +10,8 @@
  * - Cancellation support
  */
 
-import { injectable, postConstruct } from '@ide/core/shared/inversify';
-import { Emitter, Event, Disposable, DisposableCollection, CancellationTokenSource } from '@ide/core';
+import { injectable, postConstruct } from '@theia/core/shared/inversify';
+import { Emitter, Event, Disposable, DisposableCollection, CancellationTokenSource } from '@theia/core';
 import {
     AIFlowService as IAIFlowService,
     IAIFlowGraph,

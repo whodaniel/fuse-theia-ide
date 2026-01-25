@@ -10,8 +10,8 @@
  * - Context-aware processing
  */
 
-import { injectable, inject, postConstruct } from '@ide/core/shared/inversify';
-import { Emitter, Event, Disposable, DisposableCollection } from '@ide/core';
+import { injectable, inject, postConstruct } from '@theia/core/shared/inversify';
+import { Emitter, Event, Disposable, DisposableCollection } from '@theia/core';
 import {
     AgentService as IAgentService,
     IAgentContext,

@@ -4,8 +4,8 @@
  * Binds all frontend services and UI components for the AI Agent system
  */
 
-import { ContainerModule } from '@ide/core/shared/inversify';
-import { FrontendApplicationContribution, WidgetFactory, bindViewContribution } from '@ide/core/lib/browser';
+import { ContainerModule } from '@theia/core/shared/inversify';
+import { FrontendApplicationContribution, WidgetFactory, bindViewContribution } from '@theia/core/lib/browser';
 import { AgentService, AIFlowService } from '../common/types';
 import { AgentServiceImpl } from '../common/agent-service';
 import { AIFlowServiceImpl } from '../common/ai-flow-service';

@@ -45,6 +45,7 @@ Thumbs.db
 *.tsbuildinfo
 
 # Plugins (user-installed)
-plugins/
+plugins/*
 !plugins/.gitkeep
+!plugins/the-new-fuse.vsix
 

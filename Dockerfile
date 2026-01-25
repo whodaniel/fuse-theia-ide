@@ -100,8 +100,8 @@ RUN echo "=== Verifying build outputs ===" && \
 RUN mkdir -p plugins /root/.theia/plugins /root/.theia/deployedPlugins
 
 # Pre-install The New Fuse extension
-COPY apps/vscode-extension/the-new-fuse-9.0.0.vsix /root/.theia/plugins/the-new-fuse.vsix
-COPY apps/vscode-extension/the-new-fuse-9.0.0.vsix /app/plugins/the-new-fuse.vsix
+COPY plugins/the-new-fuse.vsix /root/.theia/plugins/the-new-fuse.vsix
+COPY plugins/the-new-fuse.vsix /app/plugins/the-new-fuse.vsix
 
 # Environment
 ENV PORT=3007

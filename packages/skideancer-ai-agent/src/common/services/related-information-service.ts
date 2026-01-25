@@ -10,8 +10,8 @@
  * - Smart result ranking
  */
 
-import { injectable, postConstruct } from '@ide/core/shared/inversify';
-import { Disposable, DisposableCollection, Emitter, Event } from '@ide/core';
+import { injectable, postConstruct } from '@theia/core/shared/inversify';
+import { Disposable, DisposableCollection, Emitter, Event } from '@theia/core';
 
 export enum RelatedInformationType {
     CommandInformation = 'command',

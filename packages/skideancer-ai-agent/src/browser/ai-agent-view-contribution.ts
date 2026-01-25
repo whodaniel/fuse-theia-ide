@@ -4,13 +4,13 @@
  * Contributes the AI Agent panel to the SkIDEancer workbench
  */
 
-import { CommandRegistry, MenuModelRegistry } from '@ide/core';
+import { CommandRegistry, MenuModelRegistry } from '@theia/core';
 import {
   AbstractViewContribution,
   FrontendApplication,
   FrontendApplicationContribution,
-} from '@ide/core/lib/browser';
-import { injectable, postConstruct } from '@ide/core/shared/inversify';
+} from '@theia/core/lib/browser';
+import { injectable, postConstruct } from '@theia/core/shared/inversify';
 
 import { AIAgentWidget } from './ai-agent-widget';
 

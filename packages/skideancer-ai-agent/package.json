@@ -19,11 +19,11 @@
     "src"
   ],
   "dependencies": {
-    "@ide/core": "1.59.0",
-    "@ide/ai-core": "1.59.0",
-    "@ide/editor": "1.59.0",
-    "@ide/monaco": "1.59.0",
-    "@ide/workspace": "1.59.0"
+    "@theia/core": "1.67.0",
+    "@theia/ai-core": "1.67.0",
+    "@theia/editor": "1.67.0",
+    "@theia/monaco": "1.67.0",
+    "@theia/workspace": "1.67.0"
   },
   "devDependencies": {
     "typescript": "^5.0.0",

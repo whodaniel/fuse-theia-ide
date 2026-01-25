@@ -10,7 +10,7 @@
  * - Background workspace indexing
  */
 
-import { injectable } from '@ide/core/shared/inversify';
+import { injectable } from '@theia/core/shared/inversify';
 import {
     IAgentCapability,
     IAgentContext,
