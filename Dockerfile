@@ -24,6 +24,9 @@ WORKDIR /app
 COPY package.json .
 COPY yarn.lock* .
 
+# Copy local packages required for install
+COPY packages ./packages
+
 # Install dependencies (yarn.lock will be generated if not present)
 RUN yarn install --production=false
 
