@@ -34,7 +34,13 @@ RUN yarn install --production=false
 COPY . .
 
 # Build sub-packages
-RUN cd packages/skideancer-ai-agent && yarn install && yarn build
+# Build sub-packages
+RUN cd packages/skideancer-ai-agent && \
+    rm -rf tsconfig.tsbuildinfo dist lib && \
+    yarn install && \
+    yarn build && \
+    echo "=== Listing built files ===" && \
+    ls -R lib
 
 # CRITICAL: Remove ALL stale generated/built files to ensure clean regeneration
 RUN rm -rf gen-webpack.config.js gen-webpack.node.config.js webpack.config.js src-gen lib/frontend lib/backend
