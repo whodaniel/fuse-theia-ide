@@ -40,7 +40,12 @@ RUN cd packages/skideancer-ai-agent && \
     yarn install && \
     yarn build && \
     echo "=== Listing built files ===" && \
-    ls -R lib
+    ls -R lib && \
+    echo "=== Force Linking Package ===" && \
+    rm -rf /app/node_modules/@fuse/skideancer-ai-agent && \
+    mkdir -p /app/node_modules/@fuse && \
+    ln -s /app/packages/skideancer-ai-agent /app/node_modules/@fuse/skideancer-ai-agent && \
+    echo "Symlink created successfully"
 
 # CRITICAL: Remove ALL stale generated/built files to ensure clean regeneration
 RUN rm -rf gen-webpack.config.js gen-webpack.node.config.js webpack.config.js src-gen lib/frontend lib/backend
