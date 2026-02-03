@@ -101,6 +101,9 @@ RUN echo "=== PHASE 3: Patching compiled bundles ===" && \
     done && \
     echo "Phase 3 complete"
 
+# === PHASE 4: Run IDE fixes script ===
+RUN echo "=== Running IDE fixes script ===" && node fix-ide-issues.js
+
 # Verify build completed successfully
 RUN echo "=== Verifying build outputs ===" && \
     ls -la src-gen/backend/ && \

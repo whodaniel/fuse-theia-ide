@@ -4,13 +4,13 @@
  * Contributes the AI Agent panel to the SkIDEancer workbench
  */
 
-import { CommandRegistry, MenuModelRegistry } from '@theia/core';
+import { CommandRegistry, CommandService, MenuModelRegistry } from '@theia/core';
 import {
   AbstractViewContribution,
   FrontendApplication,
   FrontendApplicationContribution,
 } from '@theia/core/lib/browser';
-import { injectable, postConstruct } from '@theia/core/shared/inversify';
+import { inject, injectable, postConstruct } from '@theia/core/shared/inversify';
 
 import { AIAgentWidget } from './ai-agent-widget';
 
@@ -48,6 +48,8 @@ export class AIAgentViewContribution
   extends AbstractViewContribution<AIAgentWidget>
   implements FrontendApplicationContribution
 {
+  @inject(CommandService) protected readonly commandService: CommandService;
+
   constructor() {
     super({
       widgetId: AI_AGENT_WIDGET_FACTORY_ID,
@@ -62,10 +64,10 @@ export class AIAgentViewContribution
 
   @postConstruct()
   protected init(): void {
-    console.log('[AIAgentViewContribution] Initialized');
+    // console.log('[AIAgentViewContribution] Initialized');
   }
 
-  async initializeLayout(app: FrontendApplication): Promise<void> {
+  async initializeLayout(_app: FrontendApplication): Promise<void> {
     // Optionally open the widget by default
     // await this.openView({ activate: false, reveal: true });
   }
@@ -145,11 +147,11 @@ export class AIAgentViewContribution
 
   private openBrowserHub(): void {
     const url = window.location.origin + '/static/browser-hub/enhanced-browser-hub.html';
-    window.open(url, '_blank');
+    this.commandService.executeCommand('options.mini-browser.open', url);
   }
 
   private openExtensionsHub(): void {
     const url = window.location.origin + '/static/browser-hub/extensions.html';
-    window.open(url, '_blank');
+    this.commandService.executeCommand('options.mini-browser.open', url);
   }
 }

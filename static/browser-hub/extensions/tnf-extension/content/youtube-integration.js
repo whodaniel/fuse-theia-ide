@@ -1,5 +1,3 @@
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 // YouTube Content Script
 // Enhances YouTube pages with quick-add functionality
 
@@ -277,7 +275,3 @@ if (document.readyState === 'loading') {
 }
 
 console.log('✅ YouTube content script ready');
-
-/******/ })()
-;
-//# sourceMappingURL=youtube-integration.js.map

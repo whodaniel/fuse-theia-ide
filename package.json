@@ -1,6 +1,6 @@
 {
   "name": "@the-new-fuse/theia-ide",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "SkIDEancer - AI-Powered Cloud IDE for The New Fuse platform",
   "private": true,
   "main": "src-gen/backend/server.js",
